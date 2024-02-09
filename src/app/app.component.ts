@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'm1p10mean-teddy-steeve-front';
+  title = 'Modernize Angular Admin Tempplate';
 }
