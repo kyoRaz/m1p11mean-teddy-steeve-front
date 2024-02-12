@@ -23,6 +23,7 @@
     "angular-tabler-icons": "^2.7.0",
     "apexcharts": "^3.35.3",
     "ng-apexcharts": "1.7.1",
+    "ngx-cookie-service": "^17.1.0",
     "rxjs": "~7.5.0",
     "sass": "^1.57.1",
     "tslib": "^2.3.0",
@@ -30,7 +31,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.0.5",
-    "@angular/cli": "~15.0.5",
+    "@angular/cli": "^15.2.10",
     "@angular/compiler-cli": "^15.0.0",
     "@types/date-fns": "^2.6.0",
     "@types/jasmine": "~4.3.0",

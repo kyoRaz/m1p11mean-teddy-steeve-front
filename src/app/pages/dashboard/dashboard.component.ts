@@ -15,6 +15,7 @@ import {
   ApexMarkers,
   ApexResponsive,
 } from 'ng-apexcharts';
+import { HttpService } from '../../services/http/http.service';
 
 interface month {
   value: string;
@@ -221,7 +222,7 @@ export class AppDashboardComponent {
     },
   ];
 
-  constructor() {
+  constructor( private httpservice: HttpService) {
     // sales overview chart
     this.salesOverviewChart = {
       series: [
@@ -400,5 +401,17 @@ export class AppDashboardComponent {
         },
       },
     };
+  }
+  
+  ngOnInit(): void {
+    this.getUsersFromAPI();
+  }
+
+  getUsersFromAPI(){
+    this.httpservice.getUsers().subscribe((data: any) =>{
+      console.log(data);
+    },(error: any) =>{
+        console.error('An error has occured:',error);
+    });
   }
 }
