@@ -27,6 +27,9 @@ import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.co
 import { HttpInterceptorService } from './services/interceptor/http-interceptor.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MyPaginatorIntl } from './paginator-intl';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +51,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     TablerIconsModule.pick(TablerIcons),
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
+    { provide: MatPaginatorIntl, useClass: MyPaginatorIntl }
   ],
   exports: [TablerIconsModule],
   bootstrap: [AppComponent],
