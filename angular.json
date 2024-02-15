@@ -26,7 +26,7 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.scss",
-              "src/assets/scss/style.scss",
+              "src/assets/scss/style.scss"
             ],
             "scripts": []
           },
@@ -59,6 +59,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "Modernize:build:production",
+            "proxyConfig":"src/proxy.config.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "Modernize:build:production"
