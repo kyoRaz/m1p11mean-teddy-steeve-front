@@ -30,16 +30,51 @@ export class HttpService  {
       })
     );
   }
-  get(servicename: string) {
+  fetchdata(servicename: string,pageNumber: number, pageSize: number) {
     let token = this.store.getToken();
-    let matricule = this.store.getUser()['matricule'];
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'Bearer ' + token);
     const options = {
       headers: headers,
       withcredintial: false,
-      params: new HttpParams().set('matricule', matricule),
+      // params: new HttpParams().set('matricule', matricule),
     };
+    const url = environment.baseUrl +`${servicename}?page=${pageNumber}&pageSize=${pageSize}`;
+    return this.http.get<any>(url, options).pipe(
+      tap(() => {
+        this._refreshget.next();
+      })
+    );
+  }
+  async postbod(servicename: string, data: any) {
+    console.log(servicename);
+    
     const url = environment.baseUrl + servicename;
+    let token = this.store.getToken();
+    const headers = new HttpHeaders().set('Content-Type', 'Application/json');
+    // .set('Authorization', 'Bearer ' + token)
+    const options = {
+      headers: 
+      headers, 
+      withcredintial: false,
+      responseType: 'text' as 'text'
+    };
+    return this.http.post(url, data, options).pipe(
+      tap(() => {
+        alert('succes')
+        console.log(data);
+        
+        // this._refreshAllPostBod.next();
+      })
+    );
+  }
+  get(servicename: string) {
+    let token = this.store.getToken();
+    const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'Bearer ' + token);
+    const options = {
+      headers: headers,
+      withcredintial: false
+    };
+    const url = environment.baseUrl+servicename;
     return this.http.get<any>(url, options).pipe(
       tap(() => {
         this._refreshget.next();
