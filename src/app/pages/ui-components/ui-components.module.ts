@@ -7,7 +7,7 @@ import { MaterialModule } from '../../material.module';
 // icons
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
-
+import { DatePipe } from '@angular/common';
 import { UiComponentsRoutes } from './ui-components.routing';
 
 // ui components
@@ -27,6 +27,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule,
     TablerIconsModule.pick(TablerIcons),
     MatNativeDateModule,
+    
   ],
   declarations: [
     AppBadgeComponent,

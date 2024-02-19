@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
 import { HttpService } from '../../../services/http/http.service';
-import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-sample-page',

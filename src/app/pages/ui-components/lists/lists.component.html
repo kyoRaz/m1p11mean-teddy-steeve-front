@@ -1,24 +1,28 @@
 <mat-card class="cardWithShadow theme-card">
   <mat-card-header>
-    <mat-card-title class="m-b-0">Lists</mat-card-title>
+    <mat-card-title class="m-b-0">Listes des Services</mat-card-title>
   </mat-card-header>
   <mat-card-content class="b-t-1">
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-4" *ngFor="let service of dataSource">
         <!-- --------------------------------------------------- -->
-        <!-- basic -->
+        <!-- Service -->
         <!-- --------------------------------------------------- -->
-        <mat-card class="b-1 shadow-none">
-          <mat-card-header>
-            <mat-card-title>Basic</mat-card-title>
+        <mat-card class="cardWithShadow overflow-hidden b-1 shadow-none">
+          <mat-card-header class="bg-primary text-white course-header d-flex justify-content-between">
+            <mat-card-title class="m-b-0 f-s-16">{{capitalizeFirstLetter(service['nom'])}}</mat-card-title>
+            <span class="d-flex align-items-center gap-4">
+             <i-tabler name="clock" class="icon-16 d-flex"></i-tabler>
+             {{service['delai'] }}
+            </span>
           </mat-card-header>
-          <mat-card-content class="b-t-1">
-            <mat-list role="list">
-              <mat-list-item role="listitem">Item 1</mat-list-item>
-              <mat-list-item role="listitem">Item 2</mat-list-item>
-              <mat-list-item role="listitem">Item 3</mat-list-item>
-            </mat-list>
+          <mat-card-content class="text-center p-y-24">
+            <h3 class="m-b-4 mat-subtitle-2 f-s-16 f-w-600">{{capitalizeFirstLetter(service['nom'])}}</h3>
+            <p class="f-s-12">{{service['estActif']}} {{service['commission']}}</p>
           </mat-card-content>
+          <mat-card-footer class="text-center p-y-24">
+            <span class="f-s-12">{{service['prix'] | currency:'MGA ':'symbol'}} </span>
+          </mat-card-footer>
         </mat-card>
       </div>
 
@@ -26,7 +30,7 @@
         <!-- --------------------------------------------------- -->
         <!-- two line -->
         <!-- --------------------------------------------------- -->
-        <mat-card class="b-1 shadow-none">
+        <!-- <mat-card class="b-1 shadow-none">
           <mat-card-header>
             <mat-card-title>Two Line</mat-card-title>
           </mat-card-header>
@@ -42,14 +46,14 @@
               </mat-list-item>
             </mat-list>
           </mat-card-content>
-        </mat-card>
+        </mat-card> -->
       </div>
 
       <div class="col-lg-6">
         <!-- --------------------------------------------------- -->
         <!-- two line -->
         <!-- --------------------------------------------------- -->
-        <mat-card class="b-1 shadow-none">
+        <!-- <mat-card class="b-1 shadow-none">
           <mat-card-header>
             <mat-card-title>Three Line</mat-card-title>
           </mat-card-header>
@@ -69,14 +73,14 @@
               </mat-list-item>
             </mat-list>
           </mat-card-content>
-        </mat-card>
+        </mat-card> -->
       </div>
 
       <div class="col-lg-6">
         <!-- --------------------------------------------------- -->
         <!-- two line -->
         <!-- --------------------------------------------------- -->
-        <mat-card class="b-1 shadow-none">
+        <!-- <mat-card class="b-1 shadow-none">
           <mat-card-header>
             <mat-card-title>Three Line with Text wrapping</mat-card-title>
           </mat-card-header>
@@ -100,14 +104,14 @@
               </mat-list-item>
             </mat-list>
           </mat-card-content>
-        </mat-card>
+        </mat-card> -->
       </div>
 
       <div class="col-lg-6">
         <!-- --------------------------------------------------- -->
         <!-- List with Selection -->
         <!-- --------------------------------------------------- -->
-        <mat-card class="b-1 shadow-none">
+        <!-- <mat-card class="b-1 shadow-none">
           <mat-card-header>
             <mat-card-title>List with Selection</mat-card-title>
           </mat-card-header>
@@ -122,14 +126,14 @@
               Options selected: {{ shoes.selectedOptions.selected.length }}
             </p>
           </mat-card-content>
-        </mat-card>
+        </mat-card> -->
       </div>
 
       <div class="col-lg-6">
         <!-- --------------------------------------------------- -->
         <!-- List with single Selection -->
         <!-- --------------------------------------------------- -->
-        <mat-card class="b-1 shadow-none">
+        <!-- <mat-card class="b-1 shadow-none">
           <mat-card-header>
             <mat-card-title>List with single Selection</mat-card-title>
           </mat-card-header>
@@ -149,14 +153,14 @@
               }}
             </p>
           </mat-card-content>
-        </mat-card>
+        </mat-card> -->
       </div>
 
       <div class="col-12">
         <!-- --------------------------------------------------- -->
         <!-- List with sections -->
         <!-- --------------------------------------------------- -->
-        <mat-card class="b-1 shadow-none">
+        <!-- <mat-card class="b-1 shadow-none">
           <mat-card-header>
             <mat-card-title>List with sections</mat-card-title>
           </mat-card-header>
@@ -177,7 +181,7 @@
               </mat-list-item>
             </mat-list>
           </mat-card-content>
-        </mat-card>
+        </mat-card> -->
       </div>
     </div>
   </mat-card-content>
