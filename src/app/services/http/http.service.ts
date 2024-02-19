@@ -30,7 +30,7 @@ export class HttpService  {
       })
     );
   }
-  fetchdata(servicename: string,pageNumber: number, pageSize: number) {
+  fetchdata(servicename: string,pageNumber: number, pageSize: number, filtre: string) {
     let token = this.store.getToken();
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'Bearer ' + token);
     const options = {
@@ -38,7 +38,7 @@ export class HttpService  {
       withcredintial: false,
       // params: new HttpParams().set('matricule', matricule),
     };
-    const url = environment.baseUrl +`${servicename}?page=${pageNumber}&pageSize=${pageSize}`;
+    const url = environment.baseUrl +`${servicename}?page=${pageNumber}&size=${pageSize}&filter=${filtre}`;
     return this.http.get<any>(url, options).pipe(
       tap(() => {
         this._refreshget.next();

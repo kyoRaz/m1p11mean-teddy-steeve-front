@@ -16,6 +16,7 @@ export class AppListsComponent implements OnInit {
   page: number = 1;
   size: number= 10;
   formData= new FormGroup({
+    _id: new FormControl(''),
     nom:new FormControl('', [Validators.required]),
     delai:new FormControl('', [Validators.required,Validators.pattern("([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]")]),
     prix:new FormControl('', [Validators.required, Validators.min(0)]),
@@ -56,6 +57,15 @@ export class AppListsComponent implements OnInit {
   async updateData(data: any){
 
     console.log(data);
+    if(data){
+      this.formData = new FormGroup({
+        _id: data._id,
+        nom:new FormControl(data.nom, [Validators.required]),
+        delai:new FormControl(data.delai, [Validators.required,Validators.pattern("([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]")]),
+        prix:new FormControl(data.prix, [Validators.required, Validators.min(0)]),
+        commission:new FormControl(data.commission, [Validators.required, Validators.min(0)])
+      });
+    }
     
     // const id  = data._id;
     // const url = this.servicename+`/${id}`;

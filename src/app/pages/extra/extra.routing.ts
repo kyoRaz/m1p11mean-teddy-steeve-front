@@ -14,7 +14,7 @@ export const ExtraRoutes: Routes = [
         component: AppIconsComponent,
       },
       {
-        path: 'sample-page',
+        path: 'employe-page',
         component: AppSamplePageComponent,
       },
     ],

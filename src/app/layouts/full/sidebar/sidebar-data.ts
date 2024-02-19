@@ -25,7 +25,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Services',
     iconName: 'list',
-    route: '/ui-components/lists',
+    route: '/ui-components/service-page',
   },
   {
     displayName: 'Menu',
@@ -59,8 +59,8 @@ export const navItems: NavItem[] = [
     route: '/extra/icons',
   },
   {
-    displayName: 'Sample Page',
+    displayName: 'Page Employés',
     iconName: 'aperture',
-    route: '/extra/sample-page',
+    route: '/extra/employe-page',
   },
 ];

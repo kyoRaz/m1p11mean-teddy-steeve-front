@@ -9,13 +9,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AppSamplePageComponent implements OnInit {
   
-  servicename: string = "beauty/users";
+  servicename: string = "beauty/users/";
   displayedColumns: string[] = ['nom', 'email', 'roleId', 'estactif','action'];
   dataSource = new MatTableDataSource<any>();
   total: number=0;
   totalPages: number=0;
   page: number = 1;
-  size: number= 10;
+  size: number = 10;
+  filtre: string = '';
 
   formData = new FormGroup({
     nom: new FormControl('', [Validators.required]),
@@ -43,13 +44,13 @@ export class AppSamplePageComponent implements OnInit {
    
   }
   async insertData(){
-    (await this.httpservice.postbod(this.servicename, this.formData.value)).subscribe(()=>{
+    (await this.httpservice.postbod(this.servicename+'employe', this.formData.value)).subscribe(()=>{
       this.loadData();
     });
   }
 
   loadData(){
-    this.httpservice.fetchdata(this.servicename,this.page,this.size).subscribe((data: any) =>{
+    this.httpservice.fetchdata(this.servicename+'employes',this.page,this.size,this.filtre).subscribe((data: any) =>{
       if(data){
         this.dataSource=data.users;
         this.total = data.total;
@@ -66,8 +67,11 @@ export class AppSamplePageComponent implements OnInit {
   updateuser(element: any): void{
     console.log('Modifier l\'utilisateur :', element);
   }
-  deleteuser(element: any): void{
+  async deleteuser(element: any): Promise<void>{
     console.log('Supprimer l\'utilisateur :', element);
+    (await this.httpservice.deleteData(this.servicename+element._id)).subscribe(()=>{
+      this.loadData();
+    });
   }
 
   getUsersFromAPI(){

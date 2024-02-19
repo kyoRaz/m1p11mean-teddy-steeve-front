@@ -20,7 +20,7 @@ export const UiComponentsRoutes: Routes = [
         component: AppChipsComponent,
       },
       {
-        path: 'lists',
+        path: 'service-page',
         component: AppListsComponent,
       },
       {
