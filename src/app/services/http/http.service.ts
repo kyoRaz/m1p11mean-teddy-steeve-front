@@ -67,6 +67,40 @@ export class HttpService  {
       })
     );
   }
+  async deleteData(servicename: string) {
+    const url = environment.baseUrl + servicename;
+    let token = this.store.getToken();
+    const headers = new HttpHeaders().set('Content-Type', 'Application/json');
+    // .set('Authorization', 'Bearer ' + token)
+    const options = {
+      headers: 
+      headers, 
+      withcredintial: false,
+      responseType: 'text' as 'text'
+    };
+    return this.http.delete(url).pipe(
+      tap(() => {
+        alert('Delete succes')
+      })
+    );
+  }
+  async putData(servicename: string, data: any) {
+    const url = environment.baseUrl + servicename;
+    let token = this.store.getToken();
+    const headers = new HttpHeaders().set('Content-Type', 'Application/json');
+    // .set('Authorization', 'Bearer ' + token)
+    const options = {
+      headers: 
+      headers, 
+      withcredintial: false,
+      responseType: 'text' as 'text'
+    };
+    return this.http.put(url, data, options).pipe(
+      tap(() => {
+        alert('succes')
+      })
+    );
+  }
   get(servicename: string) {
     let token = this.store.getToken();
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'Bearer ' + token);

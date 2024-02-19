@@ -1,5 +1,44 @@
 <mat-card class="cardWithShadow theme-card">
   <mat-card-header>
+    <mat-card-title class="m-b-0">Ajout nouveau Service</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <div class="row">
+      <form [formGroup]="formData" (ngSubmit)="onSubmit()">
+        <mat-form-field class="col-sm-3" appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="nom" name="nom">
+        </mat-form-field>
+        <mat-form-field class="col-sm-3" appearance="outline">
+          <mat-label>Delai</mat-label>
+          <input matInput formControlName="delai" name="delai" >
+          <mat-error class="col-sm-12" *ngIf="formData.get('delai')">
+            Le format de l'heure doit être HH:mm:ss
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-sm-3" appearance="outline">
+          <mat-label>Prix</mat-label>
+          <input matInput formControlName="prix" name="prix" type="number" min="0" required>
+          <mat-error class="col-sm-12" *ngIf="formData.get('prix')">
+            Le prix doit être positive
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-sm-3" appearance="outline">
+          <mat-label>Commission</mat-label>
+          <input matInput formControlName="commission" name="commission" type="number" min="0" required>
+          <mat-error class="col-sm-12" *ngIf="formData.get('commission')">
+            Le commision doit être supérieur ou égal 0
+          </mat-error>
+        </mat-form-field>
+        <div class="col-sm-2">
+          <button mat-raised-button color="primary" type="submit">Ajouter</button>
+        </div>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
     <mat-card-title class="m-b-0">Listes des Services</mat-card-title>
   </mat-card-header>
   <mat-card-content class="b-t-1">
@@ -18,170 +57,21 @@
           </mat-card-header>
           <mat-card-content class="text-center p-y-24">
             <h3 class="m-b-4 mat-subtitle-2 f-s-16 f-w-600">{{capitalizeFirstLetter(service['nom'])}}</h3>
-            <p class="f-s-12">{{service['estActif']}} {{service['commission']}}</p>
+            <p class="f-s-12"> Disponibilité: 
+              <span class="bg-light-success f-s-10 f-w-600 p-6 p-y-4 rounded text-success" *ngIf="service['estActif']"> 
+                <i-tabler class="p-6" name="check" matListItemIcon ></i-tabler> Dispo
+              </span>
+             <br>
+             Commission: <span class="bg-light-primary f-s-12 f-w-600 p-6 p-y-4 rounded text-primary">{{service['commission']}}%</span></p>
           </mat-card-content>
           <mat-card-footer class="text-center p-y-24">
-            <span class="f-s-12">{{service['prix'] | currency:'MGA ':'symbol'}} </span>
+            <p>
+              <span class="col-sm-6 f-s-6">{{service['prix'] | currency:'MGA ':'symbol'}} </span>
+            </p>
+            <span class="col-sm-3"  (click)="updateData(service)"> <i-tabler class="bg-light-secondary " name="edit" matListItemIcon ></i-tabler> </span>
+            <span class="col-sm-3" (click)="delete(service['_id'])"> <i-tabler class="bg-light-secondary text-error" name="trash" matListItemIcon ></i-tabler>  </span>
           </mat-card-footer>
         </mat-card>
-      </div>
-
-      <div class="col-lg-6">
-        <!-- --------------------------------------------------- -->
-        <!-- two line -->
-        <!-- --------------------------------------------------- -->
-        <!-- <mat-card class="b-1 shadow-none">
-          <mat-card-header>
-            <mat-card-title>Two Line</mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="b-t-1">
-            <mat-list>
-              <mat-list-item>
-                <span matListItemTitle class="f-s-16 f-w-600">Title</span>
-                <span matListItemLine class="mat-body-1">Second line</span>
-              </mat-list-item>
-              <mat-list-item>
-                <span matListItemTitle class="f-s-16 f-w-600">Title</span>
-                <span matListItemLine class="mat-body-1">Second line</span>
-              </mat-list-item>
-            </mat-list>
-          </mat-card-content>
-        </mat-card> -->
-      </div>
-
-      <div class="col-lg-6">
-        <!-- --------------------------------------------------- -->
-        <!-- two line -->
-        <!-- --------------------------------------------------- -->
-        <!-- <mat-card class="b-1 shadow-none">
-          <mat-card-header>
-            <mat-card-title>Three Line</mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="b-t-1">
-            <mat-list>
-              <mat-list-item>
-                <span matListItemTitle class="f-s-16 f-w-600">Title</span>
-                <span matListItemLine class="mat-body-1">Second line</span>
-                <span matListItemLine class="mat-body-1">Third line</span>
-              </mat-list-item>
-              <mat-list-item>
-                <span matListItemTitle class="f-s-16 f-w-600">Title</span>
-                <span matListItemLine class="mat-body-1"
-                  >Second line. This line will truncate.</span
-                >
-                <span class="mat-body-1">Third line</span>
-              </mat-list-item>
-            </mat-list>
-          </mat-card-content>
-        </mat-card> -->
-      </div>
-
-      <div class="col-lg-6">
-        <!-- --------------------------------------------------- -->
-        <!-- two line -->
-        <!-- --------------------------------------------------- -->
-        <!-- <mat-card class="b-1 shadow-none">
-          <mat-card-header>
-            <mat-card-title>Three Line with Text wrapping</mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="b-t-1">
-            <mat-list style="max-width: 500px">
-              <mat-list-item lines="3">
-                <span matListItemTitle class="f-s-16 f-w-600">Title</span>
-                <span class="mat-body-1"
-                  >Secondary line that will wrap because the list lines is
-                  explicitly set to 3 lines. Text inside of a `matListItemTitle`
-                  or `matListItemLine` will never wrap.
-                </span>
-              </mat-list-item>
-              <mat-list-item lines="3" class="mat-body-1">
-                <span matListItemTitle class="f-s-16 f-w-600">Title</span>
-                <span class="mat-body-1"
-                  >Secondary line that will wrap because the list lines is
-                  explicitly set to 3 lines. Text inside of a `matListItemTitle`
-                  or `matListItemLine` will never wrap.
-                </span>
-              </mat-list-item>
-            </mat-list>
-          </mat-card-content>
-        </mat-card> -->
-      </div>
-
-      <div class="col-lg-6">
-        <!-- --------------------------------------------------- -->
-        <!-- List with Selection -->
-        <!-- --------------------------------------------------- -->
-        <!-- <mat-card class="b-1 shadow-none">
-          <mat-card-header>
-            <mat-card-title>List with Selection</mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="b-t-1">
-            <mat-selection-list #shoes>
-              <mat-list-option *ngFor="let shoe of typesOfShoes">
-                {{ shoe }}
-              </mat-list-option>
-            </mat-selection-list>
-
-            <p class="mat-subtitle-2 f-w-600 p-16 bg-light-primary rounded">
-              Options selected: {{ shoes.selectedOptions.selected.length }}
-            </p>
-          </mat-card-content>
-        </mat-card> -->
-      </div>
-
-      <div class="col-lg-6">
-        <!-- --------------------------------------------------- -->
-        <!-- List with single Selection -->
-        <!-- --------------------------------------------------- -->
-        <!-- <mat-card class="b-1 shadow-none">
-          <mat-card-header>
-            <mat-card-title>List with single Selection</mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="b-t-1">
-            <mat-selection-list #shoes2 [multiple]="false">
-              <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">
-                {{ shoe }}
-              </mat-list-option>
-            </mat-selection-list>
-
-            <p class="mat-subtitle-2 f-w-600 p-16 bg-light-primary rounded">
-              Option selected:
-              {{
-                shoes2.selectedOptions.hasValue()
-                  ? shoes2.selectedOptions.selected[0].value
-                  : "None"
-              }}
-            </p>
-          </mat-card-content>
-        </mat-card> -->
-      </div>
-
-      <div class="col-12">
-        <!-- --------------------------------------------------- -->
-        <!-- List with sections -->
-        <!-- --------------------------------------------------- -->
-        <!-- <mat-card class="b-1 shadow-none">
-          <mat-card-header>
-            <mat-card-title>List with sections</mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="b-t-1">
-            <mat-list>
-              <div mat-subheader class="mat-body-2 m-b-16 f-w-600">Folders</div>
-              <mat-list-item *ngFor="let folder of folders">
-                <mat-icon matListItemIcon>folder</mat-icon>
-                <div matListItemTitle class="mat-body-2 f-w-600">{{ folder.name }}</div>
-                <div matListItemLine class="f-s-14 mat-body-1">{{ folder.updated | date }}</div>
-              </mat-list-item>
-              <mat-divider></mat-divider>
-              <div mat-subheader class="mat-body-2 m-y-16 f-w-600">Notes</div>
-              <mat-list-item *ngFor="let note of notes">
-                <mat-icon matListItemIcon>note</mat-icon>
-                <div matListItemTitle class="mat-body-2 f-w-600">{{ note.name }}</div>
-                <div matListItemLine class="f-s-14 mat-body-1">{{ note.updated | date }}</div>
-              </mat-list-item>
-            </mat-list>
-          </mat-card-content>
-        </mat-card> -->
       </div>
     </div>
   </mat-card-content>

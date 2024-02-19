@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { HttpService } from '../../../services/http/http.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sample-page',
@@ -16,11 +17,11 @@ export class AppSamplePageComponent implements OnInit {
   page: number = 1;
   size: number= 10;
 
-  formData = {
-    nom: '',
-    prenom: '',
-    email: ''
-  };
+  formData = new FormGroup({
+    nom: new FormControl('', [Validators.required]),
+    prenom: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email])
+  });
 
   constructor(private httpservice: HttpService) { }
 
@@ -35,7 +36,16 @@ export class AppSamplePageComponent implements OnInit {
   }
   onSubmit(): void{
     console.log('Formulaire soumis :', this.formData);
-    this.httpservice.postbod(this.servicename,this.formData);
+    if(this.formData.valid){
+      console.log(this.formData.value)
+      this. insertData();
+    }
+   
+  }
+  async insertData(){
+    (await this.httpservice.postbod(this.servicename, this.formData.value)).subscribe(()=>{
+      this.loadData();
+    });
   }
 
   loadData(){
