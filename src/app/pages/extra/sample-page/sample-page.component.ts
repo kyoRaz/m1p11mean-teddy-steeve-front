@@ -10,6 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AppSamplePageComponent implements OnInit {
   
   servicename: string = "beauty/users/";
+  isupdate: boolean = false;
   displayedColumns: string[] = ['nom', 'email', 'roleId', 'estactif','action'];
   dataSource = new MatTableDataSource<any>();
   total: number=0;
@@ -19,6 +20,7 @@ export class AppSamplePageComponent implements OnInit {
   filtre: string = '';
 
   formData = new FormGroup({
+    _id: new FormControl(''),
     nom: new FormControl('', [Validators.required]),
     prenom: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email])
@@ -58,14 +60,36 @@ export class AppSamplePageComponent implements OnInit {
         this.page = data.page;
         this.size = data.limit;
       }
-      console.log(data);
+      this.formData.reset();
     },(error: any) =>{
         console.error('An error has occured:',error);
     });
   }
 
-  updateuser(element: any): void{
-    console.log('Modifier l\'utilisateur :', element);
+  scrollToSection(sectionId: string, data: any) {
+    const element = document.getElementById(sectionId);
+    this.isupdate = true;
+    if (element) {
+      if(data){
+        this.formData.setValue({
+          _id: data._id,
+          nom: data.nom,
+          prenom: data.prenom,
+          email: data.email
+        });
+      }
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  async updateData(){  
+    const id  = this.formData.get('_id')?.value;
+    console.log(id);
+    
+    const url = this.servicename+`/${id}`;
+    (await this.httpservice.putData(url, this.formData.value)).subscribe(()=>{
+      this.isupdate = false;
+      this.loadData();
+    });
   }
   async deleteuser(element: any): Promise<void>{
     console.log('Supprimer l\'utilisateur :', element);
