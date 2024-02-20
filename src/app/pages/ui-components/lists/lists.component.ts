@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class AppListsComponent implements OnInit {
 
   servicename: string = "beauty/services";
+  isupdate: boolean = false;
   dataSource : any;
   total: number=0;
   totalPages: number=0; 
@@ -54,29 +55,39 @@ export class AppListsComponent implements OnInit {
       this.loadData();
     });
   }
-  async updateData(data: any){
-
-    console.log(data);
-    if(data){
-      this.formData = new FormGroup({
-        _id: data._id,
-        nom:new FormControl(data.nom, [Validators.required]),
-        delai:new FormControl(data.delai, [Validators.required,Validators.pattern("([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]")]),
-        prix:new FormControl(data.prix, [Validators.required, Validators.min(0)]),
-        commission:new FormControl(data.commission, [Validators.required, Validators.min(0)])
-      });
+  scrollToSection(sectionId: string, data: any) {
+    const element = document.getElementById(sectionId);
+    this.isupdate = true;
+    if (element) {
+      // console.log(data);
+      if(data){
+        this.formData.setValue({
+          _id: data._id,
+          nom: data.nom,
+          delai: data.delai,
+          prix: data.prix,
+          commission: data.commission
+        });
+      }
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  }
+  async updateData(){
     
-    // const id  = data._id;
-    // const url = this.servicename+`/${id}`;
-    // (await this.httpservice.putData(url, this.formData.value)).subscribe(()=>{
-    //   this.loadData();
-    // });
+    const id  = this.formData.get('_id')?.value;
+    console.log(id);
+    
+    const url = this.servicename+`/${id}`;
+    (await this.httpservice.putData(url, this.formData.value)).subscribe(()=>{
+      this.isupdate = false;
+      this.loadData();
+    });
   }
   loadData(){
     this.httpservice.get(this.servicename).subscribe((data: any) =>{
       if(data){
         this.dataSource=data.resultat;
+        this.formData.reset();
         // this.total = data.total;
         // this.totalPages = data.totalPages;
         // this.page = data.page;

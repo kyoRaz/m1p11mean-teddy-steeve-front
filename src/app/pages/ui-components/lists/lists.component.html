@@ -1,10 +1,10 @@
-<mat-card class="cardWithShadow theme-card">
+<mat-card class="cardWithShadow theme-card"  id="form1">
   <mat-card-header>
     <mat-card-title class="m-b-0">Ajout nouveau Service</mat-card-title>
   </mat-card-header>
   <mat-card-content class="b-t-1">
     <div class="row">
-      <form [formGroup]="formData" (ngSubmit)="onSubmit()">
+      <form [formGroup]="formData" >
         <mat-form-field class="col-sm-3" appearance="outline">
           <mat-label>Nom</mat-label>
           <input matInput formControlName="nom" name="nom">
@@ -30,14 +30,17 @@
             Le commision doit être supérieur ou égal 0
           </mat-error>
         </mat-form-field>
-        <div class="col-sm-2">
-          <button mat-raised-button color="primary" type="submit">Ajouter</button>
+         <div class="col-sm-2" *ngIf="isupdate===false" >
+          <button mat-raised-button color="primary" (click)="onSubmit()">Ajouter</button>
         </div>
+        <div class="col-sm-2" *ngIf="isupdate===true">
+          <button mat-raised-button color="primary" (click)="updateData()">Modifier</button>
+        </div> 
       </form>
     </div>
   </mat-card-content>
 </mat-card>
-<mat-card class="cardWithShadow theme-card">
+<mat-card class="cardWithShadow theme-card" >
   <mat-card-header>
     <mat-card-title class="m-b-0">Listes des Services</mat-card-title>
   </mat-card-header>
@@ -68,7 +71,7 @@
             <p>
               <span class="col-sm-6 f-s-6">{{service['prix'] | currency:'MGA ':'symbol'}} </span>
             </p>
-            <span class="col-sm-3"  (click)="updateData(service)"> <i-tabler class="bg-light-secondary " name="edit" matListItemIcon ></i-tabler> </span>
+            <span class="col-sm-3"  (click)="scrollToSection('form1',service)"> <i-tabler class="bg-light-secondary " name="edit" matListItemIcon ></i-tabler> </span>
             <span class="col-sm-3" (click)="delete(service['_id'])"> <i-tabler class="bg-light-secondary text-error" name="trash" matListItemIcon ></i-tabler>  </span>
           </mat-card-footer>
         </mat-card>
