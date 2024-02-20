@@ -10,7 +10,7 @@ export const ExtraRoutes: Routes = [
     path: '',
     children: [
       {
-        path: 'icons',
+        path: 'activate',
         component: AppIconsComponent,
       },
       {
