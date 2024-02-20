@@ -10,32 +10,37 @@ export const navItems: NavItem[] = [
     route: '/dashboard',
   },
   {
-    navCap: 'Ui Components',
+    navCap: 'Manager',
+  },
+  {
+    displayName: 'Services',
+    iconName: 'rosette',
+    route: '/manager/service-page',
+  },
+  {
+    displayName: 'Page Employés',
+    iconName: 'aperture',
+    route: '/extra/employe-page',
   },
   {
     displayName: 'Badge',
-    iconName: 'rosette',
-    route: '/ui-components/badge',
+    iconName: 'list',
+    route: '/manager/badge',
   },
   {
     displayName: 'Chips',
     iconName: 'poker-chip',
-    route: '/ui-components/chips',
-  },
-  {
-    displayName: 'Services',
-    iconName: 'list',
-    route: '/ui-components/service-page',
+    route: '/manager/chips',
   },
   {
     displayName: 'Menu',
     iconName: 'layout-navbar-expand',
-    route: '/ui-components/menu',
+    route: '/manager/menu',
   },
   {
     displayName: 'Tooltips',
     iconName: 'tooltip',
-    route: '/ui-components/tooltips',
+    route: '/manager/tooltips',
   },
   {
     navCap: 'Auth',
@@ -58,9 +63,5 @@ export const navItems: NavItem[] = [
     iconName: 'mood-smile',
     route: '/extra/icons',
   },
-  {
-    displayName: 'Page Employés',
-    iconName: 'aperture',
-    route: '/extra/employe-page',
-  },
+  
 ];
