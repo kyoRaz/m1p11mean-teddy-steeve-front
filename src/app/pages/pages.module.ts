@@ -9,6 +9,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 
 @NgModule({
   declarations: [AppDashboardComponent],
@@ -19,6 +21,7 @@ import { AppDashboardComponent } from './dashboard/dashboard.component';
     NgApexchartsModule,
     RouterModule.forChild(PagesRoutes),
     TablerIconsModule.pick(TablerIcons),
+    DragDropModule,
   ],
   exports: [TablerIconsModule],
 })

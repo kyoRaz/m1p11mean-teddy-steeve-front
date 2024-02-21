@@ -28,7 +28,7 @@ export const UiComponentsRoutes: Routes = [
         component: AppMenuComponent,
       },
       {
-        path: 'tooltips',
+        path: 'tache',
         component: AppTooltipsComponent,
       },
     ],

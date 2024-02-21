@@ -38,9 +38,9 @@ export const navItems: NavItem[] = [
     route: '/manager/menu',
   },
   {
-    displayName: 'Tooltips',
+    displayName: 'Tache',
     iconName: 'tooltip',
-    route: '/manager/tooltips',
+    route: '/manager/tache',
   },
   // {
   //   navCap: 'Auth',
