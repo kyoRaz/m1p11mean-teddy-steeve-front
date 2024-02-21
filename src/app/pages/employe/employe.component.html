@@ -1,48 +1,32 @@
-<mat-card class="cardWithShadow theme-card">
-  <mat-card-header>
-    <mat-card-title class="m-b-0">Profil</mat-card-title>
-  </mat-card-header>
-  <mat-card-content class="b-t-1">
-    <div class="row">
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Home</li>
+  </ol>
+</nav>
 
-      <div class="col-lg-4 col-sm-6">
-        <mat-card class="cardWithShadow boxed-auth">
-          <mat-card-content class="p-32">
-            <div class="text-center">
-              <a [routerLink]="['/dashboard']">
-                <img
-                  src="./assets/images/logos/user.png"
-                  class="align-middle m-2"
-                  alt="logo"
-                  style="height: 60px;width: 60px;"
-                />
-              </a>
-            </div>
-  
-            <form class="m-t-30" #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
-              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
-                >Nom</mat-label
-              >
-              <mat-form-field appearance="outline" class="w-100" color="primary">
-                <input matInput type="text" id="nom" name="nom" [(ngModel)]="user.nom" required />
-              </mat-form-field>
-              <!-- password -->
-              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
-              >Prenom</mat-label
-              >
-              <mat-form-field appearance="outline" class="w-100" color="primary">
-                <input matInput type="text" id="prenom" name="prenom" [(ngModel)]="user.prenom" required />            </mat-form-field>
-  
-              <button mat-flat-button type="submit" color="primary" class="w-100">
-                Enregistrer
-              </button>
-              <!-- input -->
-            </form>
-
-          </mat-card-content>
-        </mat-card>
+<div class="container-fluid">
+  <div class="row">
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        Profil
       </div>
-      
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="exampleInputEmail1">
+          </div>
+          <div class="mb-3">
+            <label for="examplePrenom" class="form-label">Prenom</label>
+            <input type="text" class="form-control" id="examplePrenom">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Enregistrer </button>
+        </form>
+      </div>
     </div>
-  </mat-card-content>
-</mat-card>
+    <div class="col">
+    </div>
+  </div>
+</div>
