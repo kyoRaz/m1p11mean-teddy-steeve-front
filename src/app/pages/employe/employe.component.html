@@ -6,27 +6,76 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="card" style="width: 18rem;">
-      <div class="card-header">
-        Profil
-      </div>
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <form>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="exampleInputEmail1">
-          </div>
-          <div class="mb-3">
-            <label for="examplePrenom" class="form-label">Prenom</label>
-            <input type="text" class="form-control" id="examplePrenom">
-          </div>
-
-          <button type="submit" class="btn btn-primary">Enregistrer </button>
-        </form>
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          Profil
+        </div>
+        <!-- <img src="" class="card-img-top" alt="..."> -->
+        <div class="card-body">
+          <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+            <div class="mb-3">
+              <label for="nom" class="form-label">Nom</label>
+              <input type="text" class="form-control" type="text" id="nom" name="nom" [(ngModel)]="user.nom" required>
+            </div>
+            <div class="mb-3">
+              <label for="prenom" class="form-label">Prenom</label>
+              <input type="text" class="form-control"  id="prenom" name="prenom" [(ngModel)]="user.prenom" required>
+            </div>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary">Enregistrer </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-    <div class="col">
+    <div class="col-8">
+      <div class="card">
+        <div class="card-header">
+          Horaire 
+        </div>
+        <div class="card-body">
+            <h2>Formulaire de Sélection d'Heure</h2>
+            <form #horaireForm="ngForm" (ngSubmit)="updateHoraire(horaireForm.value)">
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group mb-2">
+                          <label for="heureDebut">Début de travail</label>
+                          <input type="time" class="form-control" id="heureDebut" name="heureDebut" [(ngModel)]="horaire.heureDebut" required>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group mb-2">
+                          <label for="heureFin">Fin de Travail</label>
+                          <input type="time" class="form-control" id="heureFin" name="heureFin" [(ngModel)]="horaire.heureFin" required>
+                      </div>
+                  </div>
+              </div>
+          
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group mb-2">
+                          <label for="pauseDebut">Début de Pause</label>
+                          <input type="time" class="form-control" id="pauseDebut" name="pauseDebut" [(ngModel)]="horaire.pauseDebut" required>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group mb-3"> <!-- Ajout d'une marge en bas pour aligner avec la marge du bouton quand sur mobile -->
+                          <label for="pauseFin">Fin de Pause</label>
+                          <input type="time" class="form-control" id="pauseFin" name="pauseFin" [(ngModel)]="horaire.pauseFin" required>
+                      </div>
+                  </div>
+              </div>
+          
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button type="submit" class="btn btn-primary">Valider</button>
+              </div>
+          </form>
+          
+          
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
