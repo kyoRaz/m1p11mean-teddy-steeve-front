@@ -115,4 +115,9 @@ export class HttpService  {
       })
     );
   }
+  getOne(url:string,id:string){
+    return this.http.get<any>(environment.urlBack +url+'/'+id)
+    ;
+  }
+
 }

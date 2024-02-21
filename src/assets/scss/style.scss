@@ -24,3 +24,7 @@
 @import "pages/dashboards";
 @import "pages/auth";
 
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.container-fluid{
+    background-color: crimson!important;
+}

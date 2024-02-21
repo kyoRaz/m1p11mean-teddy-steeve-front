@@ -1,16 +1,48 @@
-<form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Profil</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+    <div class="row">
+
+      <div class="col-lg-4 col-sm-6">
+        <mat-card class="cardWithShadow boxed-auth">
+          <mat-card-content class="p-32">
+            <div class="text-center">
+              <a [routerLink]="['/dashboard']">
+                <img
+                  src="./assets/images/logos/user.png"
+                  class="align-middle m-2"
+                  alt="logo"
+                  style="height: 60px;width: 60px;"
+                />
+              </a>
+            </div>
+  
+            <form class="m-t-30" #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+                >Nom</mat-label
+              >
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input matInput type="text" id="nom" name="nom" [(ngModel)]="user.nom" required />
+              </mat-form-field>
+              <!-- password -->
+              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
+              >Prenom</mat-label
+              >
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input matInput type="text" id="prenom" name="prenom" [(ngModel)]="user.prenom" required />            </mat-form-field>
+  
+              <button mat-flat-button type="submit" color="primary" class="w-100">
+                Enregistrer
+              </button>
+              <!-- input -->
+            </form>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+      
     </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  </mat-card-content>
+</mat-card>
