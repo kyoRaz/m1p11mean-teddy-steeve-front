@@ -17,9 +17,13 @@ export class TokenService {
     window.sessionStorage.clear();
     localStorage.clear();
   }
+  public saveToken(token: any): void {
+    window.sessionStorage.removeItem(TOKEN_KEY);
+    window.sessionStorage.setItem(TOKEN_KEY, JSON.stringify(token));
+  }
   public saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+    window.sessionStorage.setItem(USER_KEY, user);
   }
   public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);

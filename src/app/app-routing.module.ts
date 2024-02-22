@@ -19,7 +19,7 @@ const routes: Routes = [
           import('./pages/pages.module').then((m) => m.PagesModule),
       },
       {
-        path: 'ui-components',
+        path: 'manager',
         loadChildren: () =>
           import('./pages/ui-components/ui-components.module').then(
             (m) => m.UicomponentsModule
@@ -30,6 +30,16 @@ const routes: Routes = [
         loadChildren: () =>
           import('./pages/extra/extra.module').then((m) => m.ExtraModule),
       },
+      {
+        path: 'employe',
+        loadChildren: () =>
+          import('./pages/employe/employe.module').then((m) => m.EmployeModule),
+      },
+      {
+        path: 'client',
+        loadChildren: () =>
+          import('./pages/client/client.module').then((m) => m.ClientModule),
+      }
     ],
   },
   {

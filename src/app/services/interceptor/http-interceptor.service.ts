@@ -24,8 +24,13 @@ export class HttpInterceptorService {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.totalrequest++;
+    const modifiedReq = req.clone({
+      setHeaders: {
+        // 'Authorization': `Bearer ${this.token.getToken()}`,
+      }
+    });
     return next
-      .handle(req)
+      .handle(modifiedReq)
       .pipe(
         timeout(APP_XHR_TIMEOUT),
         map((res) => this.handleSuccessfulResponse(res)),

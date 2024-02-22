@@ -10,57 +10,58 @@ export const navItems: NavItem[] = [
     route: '/dashboard',
   },
   {
-    navCap: 'Ui Components',
-  },
-  {
-    displayName: 'Badge',
-    iconName: 'rosette',
-    route: '/ui-components/badge',
-  },
-  {
-    displayName: 'Chips',
-    iconName: 'poker-chip',
-    route: '/ui-components/chips',
+    navCap: 'Manager',
   },
   {
     displayName: 'Services',
-    iconName: 'list',
-    route: '/ui-components/service-page',
-  },
-  {
-    displayName: 'Menu',
-    iconName: 'layout-navbar-expand',
-    route: '/ui-components/menu',
-  },
-  {
-    displayName: 'Tooltips',
-    iconName: 'tooltip',
-    route: '/ui-components/tooltips',
-  },
-  {
-    navCap: 'Auth',
-  },
-  {
-    displayName: 'Login',
-    iconName: 'lock',
-    route: '/authentication/login',
-  },
-  {
-    displayName: 'Register',
-    iconName: 'user-plus',
-    route: '/authentication/register',
-  },
-  {
-    navCap: 'Extra',
-  },
-  {
-    displayName: 'Icons',
-    iconName: 'mood-smile',
-    route: '/extra/icons',
+    iconName: 'rosette',
+    route: '/manager/service-page',
   },
   {
     displayName: 'Page Employés',
     iconName: 'aperture',
     route: '/extra/employe-page',
   },
+  {
+    displayName: 'Badge',
+    iconName: 'list',
+    route: '/manager/badge',
+  },
+  {
+    displayName: 'Chips',
+    iconName: 'poker-chip',
+    route: '/manager/chips',
+  },
+  {
+    displayName: 'Menu',
+    iconName: 'layout-navbar-expand',
+    route: '/manager/menu',
+  },
+  {
+    displayName: 'Tooltips',
+    iconName: 'tooltip',
+    route: '/manager/tooltips',
+  },
+  // {
+  //   navCap: 'Auth',
+  // },
+  // {
+  //   displayName: 'Login',
+  //   iconName: 'lock',
+  //   route: '/authentication/login',
+  // },
+  // {
+  //   displayName: 'Register',
+  //   iconName: 'user-plus',
+  //   route: '/authentication/register',
+  // },
+  {
+    navCap: 'Extra',
+  },
+  {
+    displayName: 'Activate',
+    iconName: 'mood-smile',
+    route: '/extra/activate',
+  },
+  
 ];
