@@ -15,8 +15,9 @@ import { AppBadgeComponent } from './badge/badge.component';
 import { AppChipsComponent } from './chips/chips.component';
 import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
-import { AppTooltipsComponent } from './tooltips/tooltips.component';
+import { AppTacheComponent } from './tache/tache.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
@@ -27,14 +28,14 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule,
     TablerIconsModule.pick(TablerIcons),
     MatNativeDateModule,
-    
+    DragDropModule
   ],
   declarations: [
     AppBadgeComponent,
     AppChipsComponent,
     AppListsComponent,
     AppMenuComponent,
-    AppTooltipsComponent,
+    AppTacheComponent,
   ],
 })
 export class UicomponentsModule {}

@@ -5,7 +5,7 @@ import { AppBadgeComponent } from './badge/badge.component';
 import { AppChipsComponent } from './chips/chips.component';
 import { AppListsComponent } from './lists/lists.component';
 import { AppMenuComponent } from './menu/menu.component';
-import { AppTooltipsComponent } from './tooltips/tooltips.component';
+import { AppTacheComponent } from './tache/tache.component';
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -29,7 +29,7 @@ export const UiComponentsRoutes: Routes = [
       },
       {
         path: 'tache',
-        component: AppTooltipsComponent,
+        component: AppTacheComponent,
       },
     ],
   },
