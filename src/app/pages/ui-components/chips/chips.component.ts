@@ -43,7 +43,7 @@ export class AppChipsComponent {
     ];
 
 
-  drop(event: Event) {
+  drop(event:  CdkDragDrop<string[]>) {
     if (isDragDrop(event)) {
       moveItemInArray(this.vegetables, event.previousIndex, event.currentIndex);
     }
