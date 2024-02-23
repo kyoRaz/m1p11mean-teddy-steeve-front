@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ClientRoutingModule } from './client-routing.module';
 import { ClientComponent } from './client.component';
 import { PreferenceComponent } from './preference/preference.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,9 @@ import { PreferenceComponent } from './preference/preference.component';
   ],
   imports: [
     CommonModule,
-    ClientRoutingModule
+    ClientRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ClientModule { }
