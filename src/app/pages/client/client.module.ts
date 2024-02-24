@@ -9,13 +9,15 @@ import { HistoriqueComponent } from './historique/historique.component';
 import { MaterialModule } from 'src/app/material.module';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
+import { RdvComponent } from './rdv/rdv.component';
 
 
 @NgModule({
   declarations: [
     ClientComponent,
     PreferenceComponent,
-    HistoriqueComponent
+    HistoriqueComponent,
+    RdvComponent
   ],
   imports: [
     CommonModule,
