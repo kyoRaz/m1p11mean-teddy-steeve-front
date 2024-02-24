@@ -59,7 +59,11 @@ export class AppDialogComponent implements OnInit {
     const mdure = duree.split(':')[1];
     let day :any;
     if(this.data.list.length>0){
-      day=new Date(this.data.list[this.data.list.length-1].debutService);
+      const newbegin = this.data.list[this.data.list.length-1].finService;
+      
+      day=new Date();
+      day.setHours(newbegin.split(':')[0],newbegin.split(':')[1]);
+      console.log(day);
       this.detailRdv.debutService = this.data.list[this.data.list.length-1].finService;
     }else{
       this.detailRdv.debutService = time;
@@ -69,10 +73,16 @@ export class AppDialogComponent implements OnInit {
     this.paramsdispoemploye.date = strday.split('T')[0];
     this.paramsdispoemploye.debutService = this.detailRdv.debutService;
     day.setHours(day.getHours() + parseInt(hdure), day.getMinutes() + parseInt(mdure));
+    console.log(day)
     let heurefinal = '' + day.getHours();
-    alert(heurefinal)
     if (day.getHours() < 10) {
       heurefinal = '0' + heurefinal ;
+      if(day.getMinutes()<10){
+        this.detailRdv.finService = heurefinal+ ':0' + day.getMinutes();
+      }else{ 
+        this.detailRdv.finService = heurefinal+ ':' + day.getMinutes();
+      }
+    }else{
       if(day.getMinutes()<10){
         this.detailRdv.finService = heurefinal+ ':0' + day.getMinutes();
       }else{ 
