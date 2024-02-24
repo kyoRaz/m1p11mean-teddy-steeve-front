@@ -30,6 +30,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MyPaginatorIntl } from './paginator-intl';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import {MatStepperModule} from '@angular/material/stepper';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ReactiveFormsModule,
     MaterialModule,
     TablerIconsModule.pick(TablerIcons),
-    DragDropModule
+    DragDropModule,
+    MatStepperModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },

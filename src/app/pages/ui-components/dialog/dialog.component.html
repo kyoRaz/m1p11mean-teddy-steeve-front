@@ -1,0 +1,38 @@
+<mat-card class="cardWithShadow">
+  <mat-card-header>
+    <h2 mat-dialog-title>Choisissez votre employé</h2>
+  </mat-card-header>
+  <mat-dialog-content>
+    <mat-list>
+      <mat-list-item>
+        <span matListItemTitle class="f-s-16 f-w-600">Date: </span>
+        <span matListItemLine class="mat-body-1">{{data.date | date}} à {{data.date | date:'HH:mm'}}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle class="f-s-16 f-w-600">Service: </span>
+        <span matListItemLine class="mat-body-1">{{data.service.nom }}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle class="f-s-16 f-w-600">Durée: </span>
+        <span matListItemLine class="mat-body-1"> {{data.service.delai }}</span>
+      </mat-list-item>
+    </mat-list>
+    <mat-card class="cardWithShadow theme-card">
+      <mat-card-header>
+        <div class="mat-mdc-card-header-text">
+          <mat-card-title class="mat-mdc-card-title m-b-0">Liste des employées dispo
+          </mat-card-title>
+        </div>
+      </mat-card-header>
+      <mat-card-content class="mat-mdc-card-content b-t-1">
+        <div *ngFor="let employe of dataSource">
+          <span (click)="addcard(employe.idEmploye._id, data.service._id)">{{employe.idEmploye.nom}} {{employe.idEmploye.prenom}}</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+</mat-card>

@@ -33,11 +33,6 @@ export const navItems: NavItem[] = [
     route: '/manager/chips',
   },
   {
-    displayName: 'Menu',
-    iconName: 'layout-navbar-expand',
-    route: '/manager/menu',
-  },
-  {
     displayName: 'Tache',
     iconName: 'tooltip',
     route: '/manager/tache',
