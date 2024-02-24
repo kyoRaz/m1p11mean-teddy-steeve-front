@@ -80,6 +80,7 @@ export class AppSamplePageComponent implements OnInit {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
+
   async updateData() {
     const id = this.formData.get('_id')?.value;
     console.log(id);

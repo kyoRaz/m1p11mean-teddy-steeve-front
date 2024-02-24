@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -30,6 +30,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MyPaginatorIntl } from './paginator-intl';
 
+// Importer les données de locale pour le français
+import localeFr from '@angular/common/locales/fr';
+import { registerLocaleData } from '@angular/common';
+
+// Enregistrer les données de locale pour le français
+registerLocaleData(localeFr);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,9 +59,10 @@ import { MyPaginatorIntl } from './paginator-intl';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
-    { provide: MatPaginatorIntl, useClass: MyPaginatorIntl }
+    { provide: MatPaginatorIntl, useClass: MyPaginatorIntl },
+    { provide: LOCALE_ID, useValue: 'fr' }
   ],
   exports: [TablerIconsModule],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
