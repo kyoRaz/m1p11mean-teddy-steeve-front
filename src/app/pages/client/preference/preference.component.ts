@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Preference } from 'src/app/models/preference.model';
 import { PreferenceService } from 'src/app/services/preference/preference.service';
 import { LocalStorageService } from 'src/app/services/storage/local-storage.service';
 
@@ -10,15 +11,16 @@ import { LocalStorageService } from 'src/app/services/storage/local-storage.serv
 export class PreferenceComponent {
 
   formData: any = {};
-  listEmploye: any =[];
-  listService: any =[];
-  listPref: any =[];
+  pref!: Preference;
+  listEmploye: any = [];
+  listService: any = [];
+  listPref: any = [];
 
 
   constructor(
-    private prefService :PreferenceService,
-    private storage : LocalStorageService
-    ){}
+    private prefService: PreferenceService,
+    private storage: LocalStorageService
+  ) { }
 
   ngOnInit(): void {
 
@@ -56,22 +58,29 @@ export class PreferenceComponent {
     this.prefService.getListPreference().subscribe(
       (response) => {
         this.listPref = response.resultat;
-        console.log(this.listPref);
+        // console.log(this.listPref);
       }
     );
   }
 
+  setPreference(pref: Preference) {
+    this.pref = pref;
+    console.log("🚀 ~ PreferenceComponent ~ setPreference ~ this.pref:", this.pref)
+  }
 
-  onSubmit(formData:any){
+
+
+  onSubmit(formData: any) {
     console.log(formData);
-    let data={
-      idService: formData.idServ, 
-      idEmpFav: formData.idEmp, 
+    let data = {
+      idService: formData.idServ,
+      idEmpFav: formData.idEmp,
     }
     this.prefService.createPreference(data).subscribe(
       (response) => {
-        
+
         alert('Succès: ' + response.message);
+        this.getListPreference();
       },
       (error) => {
         alert('Erreur: ' + error.message);
@@ -79,12 +88,36 @@ export class PreferenceComponent {
     );
   }
 
-  modifierPref(pref:any ){
+  onUpdate(formData: any) {
+    console.log(formData);
+    let data = {
+      idService: formData.idServ,
+      idEmpFav: formData.idEmp,
+    }
+    this.prefService.updatePreference(this.pref._id, data).subscribe(
+      (response) => {
 
+        alert('Succès: ');
+        this.getListPreference();
+      },
+      (error) => {
+        alert('Erreur: ' + error.message);
+      }
+    );
   }
 
-  deletePref(pref: any ){
 
+  deletePref() {
+    this.prefService.deletePreference(this.pref._id).subscribe(
+      (response) => {
+
+        alert('Succès: ' + response.message);
+        this.getListPreference();
+      },
+      (error) => {
+        alert('Erreur: ' + error.message);
+      }
+    );
   }
 
 }
