@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { EmployeRoutes } from './employe.routing';
 import { MaterialModule } from 'src/app/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    NgApexchartsModule
   ]
 })
 export class EmployeModule { }
