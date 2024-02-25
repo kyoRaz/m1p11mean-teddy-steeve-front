@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -33,6 +33,13 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import {MatStepperModule} from '@angular/material/stepper';
 
 
+// Importer les données de locale pour le français
+import localeFr from '@angular/common/locales/fr';
+import { registerLocaleData } from '@angular/common';
+
+// Enregistrer les données de locale pour le français
+registerLocaleData(localeFr);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,9 +64,10 @@ import {MatStepperModule} from '@angular/material/stepper';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
-    { provide: MatPaginatorIntl, useClass: MyPaginatorIntl }
+    { provide: MatPaginatorIntl, useClass: MyPaginatorIntl },
+    { provide: LOCALE_ID, useValue: 'fr' }
   ],
   exports: [TablerIconsModule],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
