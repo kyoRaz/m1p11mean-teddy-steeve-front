@@ -1,0 +1,53 @@
+// CREER UN Projet 
+
+ng new nomProjet
+
+//AJOUTER BOOTSRAP 
+npm install bootstap
+ de  ampina an ty le style ao amin angular.json
+"node_modules/bootstrap/dist/css/bootstrap.css",
+
+//micreer component 
+ng genarate component nomComponent 
+		ou
+ng g c nomComponent
+
+//micreer Guard 
+ng g g nomGuard 
+
+//micreer Service 
+ng g s nomService
+de ajoutena ao amin providers ao amin app.module.ts
+ohatra
+  providers: [
+    AuthService,
+    AuthGuardService,
+    BooksService
+  ],
+  
+
+//manisy router amin projet 
+ao amin app.module.ts asina variable appRoutes : Routes (impotena io Routes io)
+ohatra :
+const appRoutes: Routes = [
+  { path: 'auth/signup', component: SignupComponent },
+  { path: 'auth/signin', component: SigninComponent },
+  { path: 'books', canActivate: [AuthGuardService], component: BookListComponent },
+  { path: 'books/new', canActivate: [AuthGuardService], component: BookFormComponent },
+  { path: 'books/view/:id', canActivate: [AuthGuardService], component: SingleBookComponent },
+  { path: '', redirectTo: 'books', pathMatch: 'full' },
+  { path: '**', redirectTo: 'books' }
+];
+
+de aveo eo amin imports asina an ty 
+  imports: [
+    RouterModule.forRoot(appRoutes),
+  ],
+
+de soloina le <app-root></app-root> ao amin app.component.html
+<router-outlet></router-outlet>
+
+// mi desinstall module ray 
+npm uninstall angular-bootstrap-md
+
+

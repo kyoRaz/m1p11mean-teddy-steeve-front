@@ -10,6 +10,7 @@ import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     RouterModule.forChild(PagesRoutes),
     TablerIconsModule.pick(TablerIcons),
     DragDropModule,
+    MatStepperModule
   ],
   exports: [TablerIconsModule],
 })
