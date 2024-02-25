@@ -26,6 +26,29 @@ export class HistoriqueService {
     return this.http.get<any>(url, { params });
   }
 
+  getSuiviDone(data: any) {
+    let url = environment.urlBack + `rdvDetails/done/${data.idUser}`;
+    let params = new HttpParams();
+    console.log("🚀 ~ HistoriqueService ~ getHistorique ~ data:", data);
+
+    if (data) {
+      if (data.dateDebut) {
+        params = params.set('debut', data.dateDebut);
+      }
+      if (data.dateFin) {
+        params = params.set('fin', data.dateFin);
+      }
+      if (data.page) {
+        params = params.set('page', data.page);
+      }
+      if (data.size) {
+        params = params.set('pageSize ', data.size);
+      }
+    }
+
+    return this.http.get<any>(url, { params });
+  }
+
 
 
 }

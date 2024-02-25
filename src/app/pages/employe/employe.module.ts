@@ -6,11 +6,13 @@ import { EmployeRoutes } from './employe.routing';
 import { MaterialModule } from 'src/app/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { SuivitacheComponent } from './suivitache/suivitache.component';
 
 
 @NgModule({
   declarations: [
     EmployeComponent,
+    SuivitacheComponent,
   ],
   imports: [
     CommonModule,
