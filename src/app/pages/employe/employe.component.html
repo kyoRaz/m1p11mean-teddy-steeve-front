@@ -13,7 +13,7 @@
     </div>
 </mat-card-header>
 <mat-card-content>
-  <form #horaireForm="ngForm" (ngSubmit)="updateHoraire(horaireForm.value)">
+  <form #horaireForm="ngForm" (ngSubmit)="setFormData(horaireForm.value)">
     <div class="row">
         <div class="col-md-6">
             <div class="form-group mb-2">
@@ -45,7 +45,7 @@
     </div>
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="submit" class="btn btn-primary">Valider</button>
+        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate">Valider</button>
     </div>
 </form>
 </mat-card-content>
@@ -77,3 +77,22 @@
     </div>    
   </mat-card-content>
 </mat-card>
+
+<!-- UPDATE -->
+<div class="modal fade" id="modalUpdate" tabindex="-1" aria-labelledby="modalUpdateLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalUpdateLabel">Modification:</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Êtes - vous sûr de  vouloir  enregistrer cette modification ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="updateHoraire()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+  </div>

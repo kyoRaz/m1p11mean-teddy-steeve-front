@@ -57,9 +57,7 @@ export class EmployeComponent {
         opposite: false
       },
       tooltip: {
-        x: {
-          format: "dd/MM/yy HH:mm"
-        }
+        enabled: true
       }
     };
     
@@ -89,10 +87,14 @@ export class EmployeComponent {
     );
   }
 
+  setFormData(formData: any){
+    this.formData= formData;
+  }
 
-  async updateHoraire(formData: any) {
+
+  async updateHoraire() {
     let url = "beauty/horaires/" + this.horaire._id;
-    (await this.httpService.putData(url, formData)).subscribe(
+    (await this.httpService.putData(url, this.formData)).subscribe(
       (response: any) => {
         alert("Success");
       },
