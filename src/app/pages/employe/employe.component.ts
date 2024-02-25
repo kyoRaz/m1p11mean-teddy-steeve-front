@@ -8,6 +8,7 @@ import {
   ApexResponsive,
   ApexChart
 } from "ng-apexcharts";
+import { StatService } from 'src/app/services/stat/stat.service';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -27,40 +28,15 @@ export class EmployeComponent {
   user: any = {};
   horaire: any = {};
   servicename: string = "users";
-  idUser: string = "65bf662353006be666fda322"
+  idUser: string = "65bf7f78652c514a5a9bf7d4"
   chartOptions: Partial<ChartOptions> | any;
-  
-  constructor(private httpService: HttpService) {
-    this.chartOptions = {
-      series: [
-        {
-          name: "Heure  Moyenne",
-          data: [10, 41, 35, 51, 49, 62, 69]
-        }
-      ],
-      chart: {
-        height: 350,
-        type: "line"
-      },
-      xaxis: {
-        categories: [
-          "Lundi", "Mardi", "Mercredi", "Jeud", "Vendredi", "Samedi", "Dimanche"
-        ]
-      },
-      stroke: {
-        curve: "smooth"
-      },
-      dataLabels: {
-        enabled: false
-      },
-      yaxis: {
-        opposite: false
-      },
-      tooltip: {
-        enabled: true
-      }
-    };
-    
+  statData: any = {
+    // tempsTravailHeure: [],
+    // labels: []
+  };
+
+  constructor(private httpService: HttpService, private statService: StatService) {
+
   }
 
   ngOnInit(): void {
@@ -69,8 +45,10 @@ export class EmployeComponent {
     });
     this.httpService.getOne("horaires/employe", this.idUser).subscribe(response => {
       this.horaire = response.result;
-      console.log(this.horaire);
     });
+
+    this.getStat();
+
   }
 
   async onSubmit(formData: any) {
@@ -87,8 +65,8 @@ export class EmployeComponent {
     );
   }
 
-  setFormData(formData: any){
-    this.formData= formData;
+  setFormData(formData: any) {
+    this.formData = formData;
   }
 
 
@@ -105,5 +83,50 @@ export class EmployeComponent {
     );
   }
 
+  async getStat() {
+    this.statService.getStatSemaine(this.idUser).subscribe(
+      (response: any) => {
+        this.statData = response.resultat;
+        console.log("🚀 ~ EmployeComponent ~ getStat ~ this:", this.statData)
+        console.log("🚀 ~ EmployeComponent ~ getStat ~ this.statData.data.tempsTravailHeure:", this.statData.data.tempsTravailHeure)
+        this.chartOptions = this.initiateChart(this.statData.data.tempsTravailHeure, this.statData.labels);
+      },
+      (error: any) => {
+        console.error(error);
+        alert("Une erreur s'est produite : " + error.message);
+      }
+    );
+  }
+
+
+  initiateChart(valeur: any, libelle: any) {
+    return {
+      series: [
+        {
+          name: "Heure  Moyenne",
+          data: valeur
+        }
+      ],
+      chart: {
+        height: 350,
+        type: "line"
+      },
+      xaxis: {
+        categories: libelle
+      },
+      stroke: {
+        curve: "smooth"
+      },
+      dataLabels: {
+        enabled: false
+      },
+      yaxis: {
+        opposite: false
+      },
+      tooltip: {
+        enabled: true
+      }
+    };
+  }
 
 }
