@@ -79,9 +79,38 @@
 </mat-stepper>
 
 
-
-
 <mat-card class="cardWithShadow ">
+  <mat-card-content class="mat-mdc-card-content">
+    <div class="d-flex align-items-center">
+      <mat-card-title>Liste des services</mat-card-title>
+    </div>
+    <div class="row taskboard m-t-24">
+      <div class="col-sm-6 col-lg-3" *ngFor="let productcard of dataSource">
+        <mat-card class="cardWithShadow productcard overflow-hidden" >
+          <a routerLink="/widgets/cards">
+            <img src="/assets/images/products/s4.jpg" alt="imgSrc" class="w-100" mat-card-image />
+          </a>
+          <mat-card-content class="p-b-24 p-t-12 position-relative">
+            <button  mat-mini-fab color="primary" class="icon-30 cart-btn" matTooltip="Add to Cart">
+              <i-tabler name="basket" class="icon-16"></i-tabler>
+            </button>
+            <mat-card-title class="mat-headline-2 f-s-16 m-b-4">{{ productcard.nom }}</mat-card-title>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                <h6 class="mat-body-2 f-w-600">{{ productcard.prix  | currency:'MGA ':'symbol' }}</h6>
+              </div>
+              <div class="m-l-auto d-flex gap-4">
+                <span><i-tabler name="star" class="fill-warning icon-18"></i-tabler></span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- <mat-card class="cardWithShadow ">
   <mat-card-content class="mat-mdc-card-content">
     <div class="d-flex align-items-center">
       <mat-card-title>Tache</mat-card-title>
@@ -144,4 +173,4 @@
 
     </div>
   </mat-card-content>
-</mat-card>
+</mat-card> -->

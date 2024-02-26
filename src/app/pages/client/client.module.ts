@@ -16,7 +16,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
   declarations: [
     PreferenceComponent,
     HistoriqueComponent,
-    RdvComponent,AppTakerdvComponent
+    RdvComponent,
+    AppTakerdvComponent
   ],
   imports: [
     CommonModule,
