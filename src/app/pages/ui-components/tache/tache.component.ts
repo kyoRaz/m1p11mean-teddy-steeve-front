@@ -20,8 +20,8 @@ interface productcards {
 export class AppTacheComponent implements OnInit{
  
 
-  servicename: string = "beauty/services";
-  servicenameRDV: string = "beauty/rdvs/config";
+  servicename: string = "services";
+  servicenameRDV: string = "rdvs/config";
   todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
   done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
   today = new Date().toISOString().slice(0, 10);

@@ -16,7 +16,7 @@ export class AppSidePasswordComponent {
     private router: Router,
     private token :TokenService) {}
 
-  servicename: string = "beauty/users/pwsd";
+  servicename: string = "users/pwsd";
   isidentique: boolean = false;
   formData = new FormGroup({
     password: new FormControl('', [Validators.required,Validators.minLength(8)]),

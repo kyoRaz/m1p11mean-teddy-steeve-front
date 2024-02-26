@@ -23,7 +23,7 @@ export class HttpService  {
       headers: headers,
       withcredintial: false
     };
-    return this.http.get<any>(environment.baseUrl + 'beauty/users', options).pipe(
+    return this.http.get<any>(environment.baseUrl + 'users', options).pipe(
       catchError((error) =>{
         console.error('An error has occurredr:', error);
         throw error;
@@ -116,7 +116,7 @@ export class HttpService  {
     );
   }
   getOne(url:string,id:string){
-    return this.http.get<any>(environment.urlBack +url+'/'+id)
+    return this.http.get<any>(environment.baseUrl +url+'/'+id)
     ;
   }
 

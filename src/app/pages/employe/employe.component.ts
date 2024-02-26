@@ -29,7 +29,7 @@ export class EmployeComponent {
   }
 
   async onSubmit(formData: any) {
-    let url = "beauty/" + this.servicename + "/" + this.idUser;
+    let url =  this.servicename + "/" + this.idUser;
 
     (await this.httpService.putData(url, formData)).subscribe(
       (response: any) => {
@@ -44,7 +44,7 @@ export class EmployeComponent {
 
 
   async updateHoraire(formData: any) {
-    let url = "beauty/horaires/" + this.horaire._id;
+    let url = "horaires/" + this.horaire._id;
     (await this.httpService.putData(url, formData)).subscribe(
       (response: any) => {
         alert("Success");

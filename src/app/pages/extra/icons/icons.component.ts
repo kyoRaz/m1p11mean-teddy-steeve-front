@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class AppIconsComponent implements OnInit {
   
-  servicename: string = 'beauty/users/activation';
+  servicename: string = 'users/activation';
   param: any = {
     token:""
   }

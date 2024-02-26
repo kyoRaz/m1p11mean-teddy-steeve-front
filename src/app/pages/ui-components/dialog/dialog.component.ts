@@ -10,7 +10,7 @@ import { D } from '@angular/cdk/keycodes';
 })
 export class AppDialogComponent implements OnInit {
 
-  servicename2 = 'beauty/horaires/dispoUserWithNoService';
+  servicename2 = 'horaires/dispoUserWithNoService';
   dataSource: any;
   paramsdispoemploye = {
     debutService: '',

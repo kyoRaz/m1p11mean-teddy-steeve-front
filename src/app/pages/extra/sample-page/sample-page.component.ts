@@ -9,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AppSamplePageComponent implements OnInit {
 
-  servicename: string = "beauty/users/";
+  servicename: string = "users/";
   isupdate: boolean = false;
   displayedColumns: string[] = ['nom', 'email', 'roleId', 'estactif', 'action'];
   dataSource = new MatTableDataSource<any>();

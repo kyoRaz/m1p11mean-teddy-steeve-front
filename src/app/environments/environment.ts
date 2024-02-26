@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "api/",
-  urlBack: "http://localhost:3000/api/beauty/"
+  baseUrl: "api/beauty/"
 };
 
 /*
