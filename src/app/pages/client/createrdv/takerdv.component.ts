@@ -15,10 +15,10 @@ interface productcards {
 }
 @Component({
   selector: 'app-tache',
-  templateUrl: './tache.component.html',
+  templateUrl: './takerdv.component.html',
 })
-export class AppTacheComponent implements OnInit{
- 
+export class AppTakerdvComponent implements OnInit{
+
 
   servicename: string = "services";
   servicenameRDV: string = "rdvs/config";

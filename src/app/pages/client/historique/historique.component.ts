@@ -5,7 +5,6 @@ import { HistoriqueService } from 'src/app/services/historique/historique.servic
 @Component({
   selector: 'app-historique',
   templateUrl: './historique.component.html',
-  styleUrls: ['./historique.component.scss']
 })
 export class HistoriqueComponent {
   formData: any = {}

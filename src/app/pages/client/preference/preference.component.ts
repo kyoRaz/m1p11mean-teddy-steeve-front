@@ -6,7 +6,6 @@ import { LocalStorageService } from 'src/app/services/storage/local-storage.serv
 @Component({
   selector: 'app-preference',
   templateUrl: './preference.component.html',
-  styleUrls: ['./preference.component.scss']
 })
 export class PreferenceComponent {
 

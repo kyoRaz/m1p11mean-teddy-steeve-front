@@ -6,7 +6,6 @@ import { HttpService } from 'src/app/services/http/http.service';
 @Component({
   selector: 'app-employe',
   templateUrl: './employe.component.html',
-  // styleUrls: ['./employe.component.scss']
 })
 export class EmployeComponent {
 

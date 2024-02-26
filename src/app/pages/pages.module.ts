@@ -8,7 +8,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 // icons
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
-import { AppDashboardComponent } from './dashboard/dashboard.component';
+import { AppDashboardComponent } from './ui-components/dashboard/dashboard.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import {MatStepperModule} from '@angular/material/stepper';
 

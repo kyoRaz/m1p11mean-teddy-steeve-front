@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
+import { EmployeComponent } from './employe/employe.component';
 
 
-// pages
+
 import { AppIconsComponent } from './icons/icons.component';
-import { AppSamplePageComponent } from './sample-page/sample-page.component';
 
 export const ExtraRoutes: Routes = [
   {
@@ -14,9 +14,10 @@ export const ExtraRoutes: Routes = [
         component: AppIconsComponent,
       },
       {
-        path: 'employe-page',
-        component: AppSamplePageComponent,
+        path: '',
+        component: EmployeComponent,
       },
+      
     ],
   },
 ];

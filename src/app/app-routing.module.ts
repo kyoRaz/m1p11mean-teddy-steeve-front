@@ -26,15 +26,15 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'extra',
+        path: 'employe',
         loadChildren: () =>
           import('./pages/extra/extra.module').then((m) => m.ExtraModule),
       },
-      {
-        path: 'employe',
-        loadChildren: () =>
-          import('./pages/employe/employe.module').then((m) => m.EmployeModule),
-      },
+      // {
+      //   path: 'employe',
+      //   loadChildren: () =>
+      //     import('./pages/extra/employe/employe.module').then((m) => m.EmployeModule),
+      // },
       {
         path: 'client',
         loadChildren: () =>

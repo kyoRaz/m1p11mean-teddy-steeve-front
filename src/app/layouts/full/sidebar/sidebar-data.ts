@@ -1,45 +1,74 @@
 import { NavItem } from './nav-item/nav-item';
 
 export const navItems: NavItem[] = [
-  {
-    navCap: 'Home',
-  },
-  {
-    displayName: 'Dashboard',
-    iconName: 'layout-dashboard',
-    route: '/dashboard',
-  },
+  // {
+  //   navCap: 'Home',
+  // },
+  // {
+  //   displayName: 'Dashboard',
+  //   iconName: 'layout-dashboard',
+  //   route: '/dashboard',
+  // },
   {
     navCap: 'Manager',
   },
   {
+    displayName: 'Dashboard',
+    iconName: 'layout-dashboard',
+    route: '/manager/',
+  },
+  {
     displayName: 'Services',
-    iconName: 'rosette',
+    iconName: 'servicemark',
     route: '/manager/service-page',
   },
   {
     displayName: 'Page Employés',
-    iconName: 'aperture',
-    route: '/extra/employe-page',
+    iconName: 'users',
+    route: '/manager/employe-page',
   },
   {
-    displayName: 'Badge',
-    iconName: 'list',
-    route: '/manager/badge',
+    navCap: 'Employé',
   },
   {
-    displayName: 'Chips',
-    iconName: 'poker-chip',
-    route: '/manager/chips',
+    displayName: 'Profil',
+    iconName: 'user',
+    route: '/employe/',
   },
   {
     displayName: 'Tache',
-    iconName: 'tooltip',
-    route: '/manager/tache',
+    iconName: 'notes',
+    route: '/employe/login',
   },
-  // {
-  //   navCap: 'Auth',
-  // },
+  {
+    displayName: 'Historique',
+    iconName: 'history-toggle',
+    route: '/employe/login',
+  },
+  {
+    navCap: 'Client',
+  },
+  {
+    displayName: 'Prendre RDV',
+    iconName: 'pencil-plus',
+    route: '/client/rdv',
+  },
+  {
+    displayName: 'Historique RDV',
+    iconName: 'history-toggle',
+    route: '/client/historique',
+  },
+  {
+    displayName: 'Sold',
+    iconName: 'brand-cashapp',
+    route: '/client/activate',
+  },
+  {
+    displayName: 'Préference',
+    iconName: 'star',
+    route: '/client/preference',
+  },
+  
   // {
   //   displayName: 'Login',
   //   iconName: 'lock',
@@ -50,13 +79,4 @@ export const navItems: NavItem[] = [
   //   iconName: 'user-plus',
   //   route: '/authentication/register',
   // },
-  {
-    navCap: 'Extra',
-  },
-  {
-    displayName: 'Activate',
-    iconName: 'mood-smile',
-    route: '/extra/activate',
-  },
-  
 ];

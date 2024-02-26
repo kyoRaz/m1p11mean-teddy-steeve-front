@@ -1,19 +1,19 @@
 import { Routes } from '@angular/router';
 
 // ui
-import { AppBadgeComponent } from './badge/badge.component';
 import { AppChipsComponent } from './chips/chips.component';
 import { AppListsComponent } from './lists/lists.component';
-import { AppDialogComponent } from './dialog/dialog.component';
-import { AppTacheComponent } from './tache/tache.component';
+import { AppDialogComponent } from '../client/dialog/dialog.component';
+import { AppDashboardComponent } from './dashboard/dashboard.component';
+import { AppSamplePageComponent } from '../ui-components/sample-page/sample-page.component';
 
 export const UiComponentsRoutes: Routes = [
   {
     path: '',
     children: [
       {
-        path: 'badge',
-        component: AppBadgeComponent,
+        path: '',
+        component: AppDashboardComponent,
       },
       {
         path: 'chips',
@@ -24,12 +24,12 @@ export const UiComponentsRoutes: Routes = [
         component: AppListsComponent,
       },
       {
-        path: 'menu',
-        component: AppDialogComponent,
+        path: 'employe-page',
+        component: AppSamplePageComponent,
       },
       {
-        path: 'tache',
-        component: AppTacheComponent,
+        path: 'menu',
+        component: AppDialogComponent,
       },
     ],
   },
