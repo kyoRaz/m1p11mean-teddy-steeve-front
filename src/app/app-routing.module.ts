@@ -39,6 +39,11 @@ const routes: Routes = [
         path: 'client',
         loadChildren: () =>
           import('./pages/client/client.module').then((m) => m.ClientModule),
+      },
+      {
+        path: 'manager',
+        loadChildren: () =>
+          import('./pages/manager/manager.module').then((m) => m.ManagerModule),
       }
     ],
   },
@@ -61,4 +66,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

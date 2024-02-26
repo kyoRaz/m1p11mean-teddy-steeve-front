@@ -87,8 +87,6 @@ export class EmployeComponent {
     this.statService.getStatSemaine(this.idUser).subscribe(
       (response: any) => {
         this.statData = response.resultat;
-        console.log("🚀 ~ EmployeComponent ~ getStat ~ this:", this.statData)
-        console.log("🚀 ~ EmployeComponent ~ getStat ~ this.statData.data.tempsTravailHeure:", this.statData.data.tempsTravailHeure)
         this.chartOptions = this.initiateChart(this.statData.data.tempsTravailHeure, this.statData.labels);
       },
       (error: any) => {
