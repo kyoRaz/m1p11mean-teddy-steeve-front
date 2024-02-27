@@ -20,7 +20,7 @@
   </mat-card> -->
 
   
-<mat-card class="cardWithShadow">
+<mat-card class="cardWithShadow"  *ngIf="show">
     <mat-card-header>
       <div class="mat-mdc-card-header-text">
       <mat-card-title class="mat-mdc-card-title m-b-0">Temps  moyen  de  travail
@@ -28,20 +28,74 @@
       </div>
   </mat-card-header>
     <mat-card-content>
-      <div id="chart">
         <div id="chart">
           <apx-chart
             [series]="chartOptions.series"
             [chart]="chartOptions.chart"
+            [colors]="chartOptions.colors"
             [xaxis]="chartOptions.xaxis"
             [stroke]="chartOptions.stroke"
             [dataLabels]="chartOptions.dataLabels"
             [title]="chartOptions.title"
             [yaxis]="chartOptions.yaxis"
-            [tooltip]="chartOptions.tooltip">
+            [tooltip]="chartOptions.tooltip"
+            [legend]="chartOptions.legend">
           </apx-chart>
         </div>
-        
-      </div>    
+         
     </mat-card-content>
   </mat-card>
+
+<mat-card class="cardWithShadow"  *ngIf="showNbReservationParJour">
+  <mat-card-header>
+    <div class="mat-mdc-card-header-text">
+    <mat-card-title class="mat-mdc-card-title m-b-0">Nombre de réservation par jour
+    </mat-card-title>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+      <div id="chartNbReservationParJour">
+        <apx-chart
+          [series]="chartOptionNbReservationParJour.series"
+          [chart]="chartOptionNbReservationParJour.chart"
+          [colors]="chartOptionNbReservationParJour.colors"
+          [xaxis]="chartOptionNbReservationParJour.xaxis"
+          [stroke]="chartOptionNbReservationParJour.stroke"
+          [dataLabels]="chartOptionNbReservationParJour.dataLabels"
+          [title]="chartOptionNbReservationParJour.title"
+          [yaxis]="chartOptionNbReservationParJour.yaxis"
+          [tooltip]="chartOptionNbReservationParJour.tooltip"
+          [legend]="chartOptionNbReservationParJour.legend">
+        </apx-chart>
+      </div>
+        
+  </mat-card-content>
+</mat-card>
+
+
+
+<mat-card class="cardWithShadow"  *ngIf="showNbReservationParMois">
+  <mat-card-header>
+    <div class="mat-mdc-card-header-text">
+    <mat-card-title class="mat-mdc-card-title m-b-0">Nombre de réservation par mois
+    </mat-card-title>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+      <div id="chartNbReservationParMois">
+        <apx-chart
+          [series]="chartOptionNbReservationParMois.series"
+          [chart]="chartOptionNbReservationParMois.chart"
+          [colors]="chartOptionNbReservationParMois.colors"
+          [xaxis]="chartOptionNbReservationParMois.xaxis"
+          [stroke]="chartOptionNbReservationParMois.stroke"
+          [dataLabels]="chartOptionNbReservationParMois.dataLabels"
+          [title]="chartOptionNbReservationParMois.title"
+          [yaxis]="chartOptionNbReservationParMois.yaxis"
+          [tooltip]="chartOptionNbReservationParMois.tooltip"
+          [legend]="chartOptionNbReservationParMois.legend">
+        </apx-chart>
+      </div>
+        
+  </mat-card-content>
+</mat-card>

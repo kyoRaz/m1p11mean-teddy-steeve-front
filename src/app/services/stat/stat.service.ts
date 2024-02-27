@@ -17,4 +17,19 @@ export class StatService {
     return this.http.get<any>(url, { params });
   }
 
+  getStatSemaineAll() {
+    const url = environment.urlBack + `statistiques/tempsTravailMoyenParEmploye`;
+    return this.http.get<any>(url);
+  }
+
+  getReservationJour() {
+    const url = environment.urlBack + `statistiques/nombreReservationParJour`;
+    return this.http.get<any>(url);
+  }
+
+  getReservationMois() {
+    const url = environment.urlBack + `statistiques/nombreReservationParMois`;
+    return this.http.get<any>(url);
+  }
+
 }
