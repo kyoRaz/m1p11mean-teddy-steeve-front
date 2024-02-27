@@ -1,5 +1,5 @@
 {
-    "/api":{
+    "/api/beauty":{
         "target":"http://0.0.0.0:3000",
         "secure": true,
         "changeOrigin": false,

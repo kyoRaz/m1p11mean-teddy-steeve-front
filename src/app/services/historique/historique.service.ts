@@ -10,7 +10,7 @@ export class HistoriqueService {
   constructor(private http: HttpClient) { }
 
   getHistorique(data: any) {
-    let url = environment.urlBack + 'rdvs/historique';
+    let url = environment.baseUrl + 'rdvs/historique';
     let params = new HttpParams();
     console.log("🚀 ~ HistoriqueService ~ getHistorique ~ data:", data);
 

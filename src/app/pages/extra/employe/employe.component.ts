@@ -20,7 +20,6 @@ export type ChartOptions = {
 @Component({
   selector: 'app-employe',
   templateUrl: './employe.component.html',
-  // styleUrls: ['./employe.component.scss']
 })
 export class EmployeComponent {
 
@@ -52,7 +51,7 @@ export class EmployeComponent {
   }
 
   async onSubmit(formData: any) {
-    let url = "beauty/" + this.servicename + "/" + this.idUser;
+    let url = this.servicename + "/" + this.idUser;
 
     (await this.httpService.putData(url, formData)).subscribe(
       (response: any) => {
@@ -69,10 +68,9 @@ export class EmployeComponent {
     this.formData = formData;
   }
 
-
-  async updateHoraire() {
-    let url = "beauty/horaires/" + this.horaire._id;
-    (await this.httpService.putData(url, this.formData)).subscribe(
+  async updateHoraire(formData: any) {
+    let url = "horaires/" + this.horaire._id;
+    (await this.httpService.putData(url, formData)).subscribe(
       (response: any) => {
         alert("Success");
       },

@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AppListsComponent implements OnInit {
 
-  servicename: string = "beauty/services";
+  servicename: string = "services";
   isupdate: boolean = false;
   dataSource : any;
   total: number=0;

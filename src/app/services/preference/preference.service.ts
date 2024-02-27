@@ -10,28 +10,28 @@ export class PreferenceService {
   constructor(private http: HttpClient) { }
 
   getListEmploye() {
-    return this.http.get<any>(environment.urlBack + 'users/employes/all');
+    return this.http.get<any>(environment.baseUrl + 'users/employes/all');
   }
 
   getListService() {
-    return this.http.get<any>(environment.urlBack + 'services');
+    return this.http.get<any>(environment.baseUrl + 'services');
   }
 
   getListPreference() {
-    return this.http.get<any>(environment.urlBack + 'prefs');
+    return this.http.get<any>(environment.baseUrl + 'prefs');
   }
 
   createPreference(data: any) {
-    return this.http.post<any>(environment.urlBack + 'prefs', data);
+    return this.http.post<any>(environment.baseUrl + 'prefs', data);
   }
 
   deletePreference(id: string | undefined) {
-    const url = environment.urlBack + 'prefs/' + id;
+    const url = environment.baseUrl + 'prefs/' + id;
     return this.http.delete<any>(url);
   }
 
   updatePreference(id: string | undefined, userData: any) {
-    const url = environment.urlBack + `prefs/${id}`;
+    const url = environment.baseUrl + `prefs/${id}`;
     return this.http.put<any>(url, userData);
   }
 

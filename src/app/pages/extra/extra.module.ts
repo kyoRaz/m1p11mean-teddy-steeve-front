@@ -10,7 +10,8 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
 
 import { ExtraRoutes } from './extra.routing';
 import { AppIconsComponent } from './icons/icons.component';
-import { AppSamplePageComponent } from './sample-page/sample-page.component';
+import { AppSamplePageComponent } from '../ui-components/sample-page/sample-page.component';
+import { EmployeComponent } from './employe/employe.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { AppSamplePageComponent } from './sample-page/sample-page.component';
   ],
   declarations: [
     AppIconsComponent,
+    EmployeComponent,
     AppSamplePageComponent
   ],
 })

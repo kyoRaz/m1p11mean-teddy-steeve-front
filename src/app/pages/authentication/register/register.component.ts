@@ -10,7 +10,7 @@ import { HttpService } from '../../../services/http/http.service';
 export class AppSideRegisterComponent {
   constructor(private httpservice: HttpService,private router: Router) {}
 
-  servicename: string = "beauty/users/client";
+  servicename: string = "users/client";
   formData = new FormGroup({
     nom: new FormControl('', [Validators.required]),
     prenom: new FormControl('', [Validators.required]),

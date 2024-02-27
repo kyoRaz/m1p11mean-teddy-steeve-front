@@ -11,11 +11,9 @@ import { DatePipe } from '@angular/common';
 import { UiComponentsRoutes } from './ui-components.routing';
 
 // ui components
-import { AppBadgeComponent } from './badge/badge.component';
 import { AppChipsComponent } from './chips/chips.component';
 import { AppListsComponent } from './lists/lists.component';
-import { AppDialogComponent } from './dialog/dialog.component';
-import { AppTacheComponent } from './tache/tache.component';
+import { AppDialogComponent } from '../client/dialog/dialog.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -33,11 +31,9 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatStepperModule
   ],
   declarations: [
-    AppBadgeComponent,
     AppChipsComponent,
     AppListsComponent,
     AppDialogComponent,
-    AppTacheComponent,
   ],
 })
 export class UicomponentsModule {}
