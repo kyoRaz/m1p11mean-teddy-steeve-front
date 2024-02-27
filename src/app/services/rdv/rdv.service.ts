@@ -19,5 +19,10 @@ export class RdvService {
     return this.http.get<any>(url);
   }
 
+  payer(id: any) {
+    const url = environment.baseUrl + `rdvs/payer/${id}`;
+    return this.http.post<any>(url, { id });
+  }
+
 
 }

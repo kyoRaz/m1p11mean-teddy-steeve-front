@@ -37,3 +37,20 @@
     
     </mat-card-content>
     </mat-card>
+    <mat-card class="cardWithShadow">
+      <mat-card-content>
+        <div class="row">
+          <div class="col text-left">
+            <mat-card-title>Total :</mat-card-title>  
+          </div>
+          <div class="col text-right">
+            <div>{{total}}</div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    
+    <div class="d-grid gap-2 col-6 mx-auto" *ngIf="!rdv.isPaid">
+      <button class="btn btn-success" (click)="payerRDV()">Payer</button>
+    </div>

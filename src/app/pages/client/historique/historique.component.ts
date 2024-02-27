@@ -9,7 +9,7 @@ import { HistoriqueService } from 'src/app/services/historique/historique.servic
 export class HistoriqueComponent {
   formData: any = {}
   historique: any = [];
-  displayedColumns: string[] = ['num', 'dateRDV', 'action'];
+  displayedColumns: string[] = ['num', 'dateRDV', 'etat', 'action'];
   total: number = 0;
   totalPages: number = 0;
   page: number = 1;
@@ -53,9 +53,7 @@ export class HistoriqueComponent {
     );
   }
 
-  apercu(rdv: any) {
 
-  }
 
 
 }

@@ -9,7 +9,7 @@
 <mat-card class="cardWithShadow theme-card"  id="form2">
 <mat-card-header>
     <div class="mat-mdc-card-header-text">
-    <mat-card-title class="mat-mdc-card-title m-b-0">Ajout Employée
+    <mat-card-title class="mat-mdc-card-title m-b-0">Filtre
     </mat-card-title>
     </div>
 </mat-card-header>
@@ -40,8 +40,8 @@
 <mat-card class="cardWithShadow">
 <mat-card-header>
     <div>
-    <mat-card-title>Utilisateurs</mat-card-title>
-    <mat-card-subtitle>Employée</mat-card-subtitle>
+    <!-- <mat-card-title>Utilisateurs</mat-card-title> -->
+    <mat-card-subtitle>Liste :</mat-card-subtitle>
     </div>
 </mat-card-header>
 <mat-card-content>
@@ -60,6 +60,22 @@
     <ng-container matColumnDef="dateRDV">
         <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"> Date du  Rendez-vous  </th>
         <td mat-cell *matCellDef="let element" class="mat-body-1"> {{element.dateRdv | date:'EEE d MMM y':'':'fr' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="etat">
+
+        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"> Etat </th>
+        <td mat-cell *matCellDef="let element" class="mat-body-1"> 
+          <!-- Affiche l'icône de paiement effectué en vert -->
+        <div *ngIf="element.isPaid; else notPaid">
+          <mat-icon style="color:green;">check_circle</mat-icon> Payé
+        </div>
+
+          <ng-template #notPaid>
+            <mat-icon style="color:red;">cancel</mat-icon> Non Payé
+          </ng-template>
+
+        </td>
     </ng-container>
 
 
