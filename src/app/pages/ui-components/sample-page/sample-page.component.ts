@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { HttpService } from '../../../services/http/http.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoaderService } from "../../../services/loader/loader.service";
 
 @Component({
   selector: 'app-sample-page',
@@ -26,7 +27,7 @@ export class AppSamplePageComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email])
   });
 
-  constructor(private httpservice: HttpService) { }
+  constructor(private httpservice: HttpService,public loader: LoaderService) { }
 
   ngOnInit(): void {
     this.loadData();
