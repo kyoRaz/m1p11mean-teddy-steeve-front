@@ -1,0 +1,165 @@
+<mat-card class="cardWithShadow">
+<mat-card-content>
+    <mat-card-title>Dépense</mat-card-title>
+    <mat-card-subtitle class="mat-body-1"></mat-card-subtitle>
+</mat-card-content>
+</mat-card>
+
+
+<mat-card class="cardWithShadow">
+<mat-card-header>
+    <div>
+        <mat-card-subtitle>Ajout</mat-card-subtitle>
+    </div>
+</mat-card-header>
+<mat-card-content>
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+        <div class="row">
+          <div class="col-sm mb-3">
+            <label for="Services" class="form-label">Services :</label>
+            <select class="form-select" [(ngModel)]="formData.idTypeDepense" name="idTypeDepense">
+              <option *ngFor="let serv of listTypeDepense" [value]="serv._id">{{ serv.libelle }}</option>
+            </select>
+          </div>
+          <div class="col-sm mb-3">
+            <label for="montant" class="form-label">Montant :</label>
+            <input type="number" class="form-control" id="montant" name="montant" [(ngModel)]="formData.montant" min="0" placeholder="0">
+          </div>
+          <div class="col-sm mb-3">
+            <label for="description" class="form-label">Description :</label>
+            <input type="text" class="form-control" id="description" name="description" [(ngModel)]="formData.description" placeholder="Description de la dépense">
+          </div>
+        </div>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </div>
+      </form>
+</mat-card-content>
+</mat-card>
+
+
+<mat-card class="cardWithShadow">
+    <mat-card-header>
+        <div>
+        <!-- <mat-card-title>Utilisateurs</mat-card-title> -->
+        <mat-card-subtitle>Liste :</mat-card-subtitle>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="depenses">
+    
+        <!-- Position Column -->
+        <ng-container matColumnDef="num">
+            <th mat-header-cell *matHeaderCellDef> # </th>
+            <td mat-cell *matCellDef="let element; let i = index;">
+                {{i + 1}}
+            </td>
+            </ng-container>
+            
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"> Date  </th>
+            <td mat-cell *matCellDef="let element" class="mat-body-1"> {{element.date | date:'EEE d MMM y':'':'fr' }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"> Type </th>
+            <td mat-cell *matCellDef="let element" class="mat-body-1"> 
+                {{element.idTypeDepense.libelle}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="montant">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"> Montant </th>
+            <td mat-cell *matCellDef="let element" class="mat-body-1"> 
+                {{element.montant}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"> Description </th>
+            <td mat-cell *matCellDef="let element" class="mat-body-1"> 
+                {{element.description}}
+            </td>
+        </ng-container>
+    
+    
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element">
+            <button mat-button mat-button data-bs-toggle="modal" data-bs-target="#modalUpdate" (click)="setDepense(element)" >
+                <i class="fas fa-edit" style="color: darkorange;"></i>
+            </button>
+            <button mat-button mat-button data-bs-toggle="modal" data-bs-target="#modalSuppression" (click)="setDepense(element)" >
+                <i class="fas fa-trash-alt" style="color: red;"></i>
+            </button>
+            </td>
+        </ng-container>
+    
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+        </table>
+    
+        
+    </mat-card-content>
+    </mat-card>
+
+
+    <div class="modal fade" id="modalUpdate" tabindex="-1" aria-labelledby="modalUpdateLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form #updateForm="ngForm" (ngSubmit)="onUpdate(updateForm.value)">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalUpdateLabel">Modifier Preference</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3" *ngIf="depense">
+                  <div class="mb-3">
+                    <label for="Services" class="form-label">Services :</label>
+                    <select class="form-select" [(ngModel)]="depense.idTypeDepense._id" name="idTypeDepense" required>
+                      <option *ngFor="let serv of listTypeDepense" [value]="serv._id">{{ serv.libelle }}</option>
+                    </select>
+                    
+                  </div>
+                  <!-- <div class="mb-3">
+                    <label for="montant" class="form-label">Montant :</label>
+                    <input type="number" class="form-control" id="montant" name="montant" [(ngModel)]="depense.montant" min="0" placeholder="0">
+                  </div> -->
+                  <div class="mb-3">
+                    <label for="description" class="form-label">Description :</label>
+                    <input type="text" class="form-control" id="description" name="description" [(ngModel)]="depense.description" placeholder="Description de la dépense">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Valider</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+        
+
+    <!-- SUPPRESSION -->
+<div class="modal fade" id="modalSuppression" tabindex="-1" aria-labelledby="modalSuppressionLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalSuppressionLabel">Suppression Dépense :</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Êtes - vous sûr de  vouloir  supprimer cette Dépense ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary" (click)="deleteDep()" data-bs-dismiss="modal">Valider</button>
+        </div>
+      </div>
+    </div>
+    </div>

@@ -37,4 +37,29 @@ export class StatService {
     return this.http.get<any>(url);
   }
 
+  getTypeList() {
+    const url = environment.baseUrl + `typeDepenses`;
+    return this.http.get<any>(url);
+  }
+
+  createDepense(data: any) {
+    const url = environment.baseUrl + `depenses`;
+    return this.http.post<any>(url, data);
+  }
+
+  getDepense() {
+    const url = environment.baseUrl + `depenses`;
+    return this.http.get<any>(url);
+  }
+
+  updateDepense(id: any, data: any) {
+    const url = environment.baseUrl + `depenses/${id}`;
+    return this.http.put<any>(url, data);
+  }
+
+  deleteDepense(id: any) {
+    const url = environment.baseUrl + `depenses/${id}`;
+    return this.http.delete<any>(url);
+  }
+
 }
