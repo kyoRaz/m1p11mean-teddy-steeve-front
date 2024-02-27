@@ -32,4 +32,9 @@ export class StatService {
     return this.http.get<any>(url);
   }
 
+  getBeneficeStat() {
+    const url = environment.baseUrl + `statistiques/beneficeParMoisIncluantDepense`;
+    return this.http.get<any>(url);
+  }
+
 }
