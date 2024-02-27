@@ -39,7 +39,7 @@ export class RdvComponent {
 
       },
       (error) => {
-        alert('Erreur: ' + error.message);
+        // alert('Erreur: ' + error.message);
       }
     );
   }
@@ -50,7 +50,7 @@ export class RdvComponent {
         this.listRdvDet = response.result;
       },
       (error) => {
-        alert('Erreur: ' + error.message);
+        // alert('Erreur: ' + error.message);
       }
     );
   }

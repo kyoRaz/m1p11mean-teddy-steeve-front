@@ -53,7 +53,7 @@ export class SuivitacheComponent {
         this.size = response.pageSize;
       },
       (error) => {
-        alert('Erreur: ' + error.message);
+        // alert('Erreur: ' + error.message);
       }
     );
   }

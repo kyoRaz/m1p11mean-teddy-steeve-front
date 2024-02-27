@@ -53,11 +53,11 @@ export class EmployeComponent {
 
     (await this.httpService.putData(url, formData)).subscribe(
       (response: any) => {
-        alert("Success");
+        // alert("Success");
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
+        // alert("Une erreur s'est produite : " + error.message);
       }
     );
   }
@@ -70,11 +70,11 @@ export class EmployeComponent {
     let url = "horaires/" + this.horaire._id;
     (await this.httpService.putData(url, this.formData)).subscribe(
       (response: any) => {
-        alert("Success");
+        // alert("Success");
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
+        // alert("Une erreur s'est produite : " + error.message);
       }
     );
   }
@@ -88,7 +88,7 @@ export class EmployeComponent {
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
+        // alert("Une erreur s'est produite : " + error.message);
       }
     );
   }

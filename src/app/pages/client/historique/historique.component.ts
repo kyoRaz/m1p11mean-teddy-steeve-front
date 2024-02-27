@@ -48,7 +48,7 @@ export class HistoriqueComponent {
         // this.getListPreference();
       },
       (error) => {
-        alert('Erreur: ' + error.message);
+        // alert('Erreur: ' + error.message);
       }
     );
   }

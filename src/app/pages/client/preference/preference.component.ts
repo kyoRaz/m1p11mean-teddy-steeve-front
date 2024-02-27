@@ -78,11 +78,11 @@ export class PreferenceComponent {
     this.prefService.createPreference(data).subscribe(
       (response) => {
 
-        alert('Succès: ' + response.message);
+        // alert('Succès: ' + response.message);
         this.getListPreference();
       },
       (error) => {
-        alert('Erreur: ' + error.message);
+        // alert('Erreur: ' + error.message);
       }
     );
   }
@@ -96,11 +96,11 @@ export class PreferenceComponent {
     this.prefService.updatePreference(this.pref._id, data).subscribe(
       (response) => {
 
-        alert('Succès: ');
+        // alert('Succès: ');
         this.getListPreference();
       },
       (error) => {
-        alert('Erreur: ' + error.message);
+        // alert('Erreur: ' + error.message);
       }
     );
   }
@@ -110,11 +110,11 @@ export class PreferenceComponent {
     this.prefService.deletePreference(this.pref._id).subscribe(
       (response) => {
 
-        alert('Succès: ' + response.message);
+        // alert('Succès: ' + response.message);
         this.getListPreference();
       },
       (error) => {
-        alert('Erreur: ' + error.message);
+        // alert('Erreur: ' + error.message);
       }
     );
   }
