@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { HistoriqueService } from 'src/app/services/historique/historique.service';
+import { LoaderService } from "../../../../services/loader/loader.service";
 
 @Component({
   selector: 'app-suivitache',
@@ -18,7 +19,8 @@ export class SuivitacheComponent {
   size: number = 10;
   idUser: string = "65bf7f78652c514a5a9bf7d4"
 
-  constructor(private histoService: HistoriqueService) { }
+  constructor(private histoService: HistoriqueService
+    ,public loader: LoaderService) { }
 
   ngOnInit() {
     let data = {

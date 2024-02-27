@@ -1,129 +1,140 @@
-<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+<div *ngIf="(loader.isLoading | async)" class="loader-overlay ">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+<div *ngIf="!(loader.isLoading | async)">
+
+  <nav
+    style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
+    aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">Preference </li>
     </ol>
   </nav>
-<div class="container-fluid">
+  <div class="container-fluid">
     <div class="row">
-        <div class="col">
-          <div class="card" style="width: 18rem;">
-            <div class="card-header">
-              Ajout
-            </div>
-            <!-- <img src="" class="card-img-top" alt="..."> -->
-            <div class="card-body">
-              <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
-                <div class="mb-3">
-                  <label for="Services" class="form-label">Services :</label>
-                  <select class="form-select" [(ngModel)]="formData.idServ" name="idServ">
-                    <option *ngFor="let serv of listService" [value]="serv._id">{{ serv.nom }}</option>
-                  </select>
-                  
-                </div>
-                <div class="mb-3">
-                  <label for="employe" class="form-label">Employé</label>
-                  <select class="form-select" [(ngModel)]="formData.idEmp" name="idEmp" >
-                    <option *ngFor="let emp of listEmploye" [value]="emp._id"> {{ emp.prenom }} {{ emp.nom }}</option>
-                  </select>
-                </div>
-                <div class="d-grid gap-2">
-                  <button type="submit" class="btn btn-primary">Enregistrer </button>
-                </div>
-              </form>
-            </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+            Ajout
           </div>
-        </div>
-        <div class="col-8">
-          <div class="card">
-            <div class="card-header">
-              Preference : 
-            </div>
-            <div class="card-body">
-                <h2>Vos préférences :</h2>
-                <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Service</th>
-                        <th scope="col">Employé</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let pref of listPref; let i = index">
-                            <td>{{ i + 1 }}</td>
-                            <td>{{ pref.idService.nom }}</td>
-                            <td>{{ pref.idEmpFav.prenom }} {{ pref.idEmpFav.nom }}</td>
-                            <td>
-                                <button class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#modalUpdate" (click)="setPreference(pref)">
-                                    <i class="fas fa-edit"></i> <!-- Icône de modification -->
-                                  </button>
-                                  <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalSuppression" (click)="setPreference(pref)" >
-                                    <i class="fas fa-trash-alt"></i> <!-- Icône de suppression -->
-                                  </button>
-                            </td>
-                          </tr>
-                    </tbody>
-                  </table>
-            </div>
+          <!-- <img src="" class="card-img-top" alt="..."> -->
+          <div class="card-body">
+            <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
+              <div class="mb-3">
+                <label for="Services" class="form-label">Services :</label>
+                <select class="form-select" [(ngModel)]="formData.idServ" name="idServ">
+                  <option *ngFor="let serv of listService" [value]="serv._id">{{ serv.nom }}</option>
+                </select>
+
+              </div>
+              <div class="mb-3">
+                <label for="employe" class="form-label">Employé</label>
+                <select class="form-select" [(ngModel)]="formData.idEmp" name="idEmp">
+                  <option *ngFor="let emp of listEmploye" [value]="emp._id"> {{ emp.prenom }} {{ emp.nom }}</option>
+                </select>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Enregistrer </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-
+      <div class="col-8">
+        <div class="card">
+          <div class="card-header">
+            Preference :
+          </div>
+          <div class="card-body">
+            <h2>Vos préférences :</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Service</th>
+                  <th scope="col">Employé</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let pref of listPref; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ pref.idService.nom }}</td>
+                  <td>{{ pref.idEmpFav.prenom }} {{ pref.idEmpFav.nom }}</td>
+                  <td>
+                    <button class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#modalUpdate"
+                      (click)="setPreference(pref)">
+                      <i class="fas fa-edit"></i> <!-- Icône de modification -->
+                    </button>
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalSuppression"
+                      (click)="setPreference(pref)">
+                      <i class="fas fa-trash-alt"></i> <!-- Icône de suppression -->
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
 
+  </div>
 
 
-    <div class="modal fade" id="modalUpdate" tabindex="-1" aria-labelledby="modalUpdateLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <form #updateForm="ngForm" (ngSubmit)="onUpdate(updateForm.value)">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="modalUpdateLabel">Modifier Preference</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="mb-3" *ngIf="pref">
-                <div class="mb-3">
-                  <label for="Services" class="form-label">Services :</label>
-                  <select class="form-select" [(ngModel)]="pref.idService._id" name="idServ" required>
-                    <option *ngFor="let serv of listService" [value]="serv._id">{{ serv.nom }}</option>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label for="employe" class="form-label">Employé</label>
-                  <select class="form-select" [(ngModel)]="pref.idEmpFav._id" name="idEmp" required>
-                    <option *ngFor="let emp of listEmploye" [value]="emp._id">{{ emp.prenom }} {{ emp.nom }}</option>
-                  </select>
-                </div>
+
+  <div class="modal fade" id="modalUpdate" tabindex="-1" aria-labelledby="modalUpdateLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form #updateForm="ngForm" (ngSubmit)="onUpdate(updateForm.value)">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalUpdateLabel">Modifier Preference</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3" *ngIf="pref">
+              <div class="mb-3">
+                <label for="Services" class="form-label">Services :</label>
+                <select class="form-select" [(ngModel)]="pref.idService._id" name="idServ" required>
+                  <option *ngFor="let serv of listService" [value]="serv._id">{{ serv.nom }}</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="employe" class="form-label">Employé</label>
+                <select class="form-select" [(ngModel)]="pref.idEmpFav._id" name="idEmp" required>
+                  <option *ngFor="let emp of listEmploye" [value]="emp._id">{{ emp.prenom }} {{ emp.nom }}</option>
+                </select>
               </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
       </div>
-      </div>
-      
-
-<!-- SUPPRESSION -->
-<div class="modal fade" id="modalSuppression" tabindex="-1" aria-labelledby="modalSuppressionLabel" aria-hidden="true" >
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h1 class="modal-title fs-5" id="modalSuppressionLabel">Suppression Preference :</h1>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-      Êtes - vous sûr de  vouloir  supprimer cette preference ?
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-      <button type="button" class="btn btn-primary" (click)="deletePref()">Accepter</button>
     </div>
   </div>
-</div>
+
+
+  <!-- SUPPRESSION -->
+  <div class="modal fade" id="modalSuppression" tabindex="-1" aria-labelledby="modalSuppressionLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalSuppressionLabel">Suppression Preference :</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Êtes - vous sûr de vouloir supprimer cette preference ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary" (click)="deletePref()">Accepter</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 import { RdvService } from 'src/app/services/rdv/rdv.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class RdvComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private rdvService: RdvService
+    private rdvService: RdvService,
+    public loader: LoaderService
   ) { }
 
   ngOnInit(): void {

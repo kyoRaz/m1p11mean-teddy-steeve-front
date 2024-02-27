@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Preference } from 'src/app/models/preference.model';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 import { PreferenceService } from 'src/app/services/preference/preference.service';
 import { LocalStorageService } from 'src/app/services/storage/local-storage.service';
 
@@ -18,7 +19,8 @@ export class PreferenceComponent {
 
   constructor(
     private prefService: PreferenceService,
-    private storage: LocalStorageService
+    private storage: LocalStorageService,
+    public loader: LoaderService
   ) { }
 
   ngOnInit(): void {

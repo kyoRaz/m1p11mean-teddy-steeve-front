@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { environment } from 'src/app/environments/environment';
 import { HttpService } from 'src/app/services/http/http.service';
+import { LoaderService } from "../../../services/loader/loader.service";
 
 import {
   ApexNonAxisChartSeries,
@@ -32,7 +33,9 @@ export class EmployeComponent {
   statData: any = {};
   show = false;
 
-  constructor(private httpService: HttpService, private statService: StatService) {
+  constructor(private httpService: HttpService
+    , private statService: StatService
+    ,public loader: LoaderService) {
 
   }
 

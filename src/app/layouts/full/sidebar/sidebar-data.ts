@@ -38,12 +38,12 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Tache',
     iconName: 'notes',
-    route: '/employe/login',
+    route: '/employe/tache',
   },
   {
     displayName: 'Historique',
     iconName: 'history-toggle',
-    route: '/employe/login',
+    route: '/employe/suivi',
   },
   {
     navCap: 'Client',

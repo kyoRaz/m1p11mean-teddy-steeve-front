@@ -4,6 +4,7 @@ import { HttpService } from '../../../services/http/http.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog,MatDialogActions,MatDialogClose,MatDialogContent,MatDialogTitle} from '@angular/material/dialog';
 import { AppDialogComponent } from '../dialog/dialog.component';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 
 // ecommerce card
 interface productcards {
@@ -42,7 +43,8 @@ export class AppTakerdvComponent implements OnInit{
     listDetails:[]
   }
 
-  constructor(private httpservice: HttpService,public dialog: MatDialog) { }
+  constructor(private httpservice: HttpService,public dialog: MatDialog
+    ,public loader: LoaderService) { }
 
   ngOnInit(): void {
     this.loadData()

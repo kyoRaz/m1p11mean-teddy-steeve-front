@@ -1,4 +1,8 @@
-<mat-card class="cardWithShadow">
+<div *ngIf="(loader.isLoading | async)" class="loader-overlay ">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+<div *ngIf="!(loader.isLoading | async)">
+  <mat-card class="cardWithShadow">
     <mat-card-content>
       <mat-card-title>Rendez-vous - {{rdv.dateRdv | date:'EEE d MMM y':'':'fr' }}</mat-card-title>
       <mat-card-subtitle class="mat-body-1"></mat-card-subtitle>
@@ -8,32 +12,33 @@
 
   <mat-card class="cardWithShadow">
     <mat-card-header>
-        <div>
+      <div>
         <!-- <mat-card-title>Utilisateurs</mat-card-title> -->
         <mat-card-subtitle>Service</mat-card-subtitle>
-        </div>
+      </div>
     </mat-card-header>
     <mat-card-content>
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Service</th>
-                <th scope="col">Employé</th>
-                <th scope="col">Prix</th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let rdvDet of listRdvDet; let i = index">
-                    <td>{{ i + 1 }}</td>
-                    <td>{{ rdvDet.idService.nom }}</td>
-                    <td>{{ rdvDet.idEmploye.prenom }} {{ rdvDet.idEmploye.nom }}</td>
-                    <td>
-                        {{ rdvDet.prixService }} Ar
-                    </td>
-                  </tr>
-            </tbody>
-          </table>
-    
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Service</th>
+            <th scope="col">Employé</th>
+            <th scope="col">Prix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rdvDet of listRdvDet; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ rdvDet.idService.nom }}</td>
+            <td>{{ rdvDet.idEmploye.prenom }} {{ rdvDet.idEmploye.nom }}</td>
+            <td>
+              {{ rdvDet.prixService }} Ar
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
     </mat-card-content>
-    </mat-card>
+  </mat-card>
+</div>
