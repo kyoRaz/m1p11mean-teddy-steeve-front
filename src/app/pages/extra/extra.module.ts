@@ -12,6 +12,8 @@ import { ExtraRoutes } from './extra.routing';
 import { AppIconsComponent } from './icons/icons.component';
 import { AppSamplePageComponent } from '../ui-components/sample-page/sample-page.component';
 import { EmployeComponent } from './employe/employe.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { SuivitacheComponent } from './employe/suivitache/suivitache.component';
 
 
 @NgModule({
@@ -22,11 +24,13 @@ import { EmployeComponent } from './employe/employe.component';
     FormsModule,
     ReactiveFormsModule,
     TablerIconsModule.pick(TablerIcons),
+    NgApexchartsModule
   ],
   declarations: [
     AppIconsComponent,
     EmployeComponent,
-    AppSamplePageComponent
+    AppSamplePageComponent,
+    SuivitacheComponent
   ],
 })
-export class ExtraModule {}
+export class ExtraModule { }

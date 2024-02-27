@@ -11,24 +11,24 @@ export class StatService {
   constructor(private http: HttpClient) { }
 
   getStatSemaine(id: any) {
-    const url = environment.urlBack + `statistiques/tempsTravailMoyenDUnEmploye`;
+    const url = environment.baseUrl + `statistiques/tempsTravailMoyenDUnEmploye`;
     let params = new HttpParams();
     params = params.set('idEmploye', id);
     return this.http.get<any>(url, { params });
   }
 
   getStatSemaineAll() {
-    const url = environment.urlBack + `statistiques/tempsTravailMoyenParEmploye`;
+    const url = environment.baseUrl + `statistiques/tempsTravailMoyenParEmploye`;
     return this.http.get<any>(url);
   }
 
   getReservationJour() {
-    const url = environment.urlBack + `statistiques/nombreReservationParJour`;
+    const url = environment.baseUrl + `statistiques/nombreReservationParJour`;
     return this.http.get<any>(url);
   }
 
   getReservationMois() {
-    const url = environment.urlBack + `statistiques/nombreReservationParMois`;
+    const url = environment.baseUrl + `statistiques/nombreReservationParMois`;
     return this.http.get<any>(url);
   }
 

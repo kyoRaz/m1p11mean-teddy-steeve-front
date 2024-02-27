@@ -29,10 +29,8 @@ export class EmployeComponent {
   servicename: string = "users";
   idUser: string = "65bf7f78652c514a5a9bf7d4"
   chartOptions: Partial<ChartOptions> | any;
-  statData: any = {
-    // tempsTravailHeure: [],
-    // labels: []
-  };
+  statData: any = {};
+  show = false;
 
   constructor(private httpService: HttpService, private statService: StatService) {
 
@@ -68,9 +66,9 @@ export class EmployeComponent {
     this.formData = formData;
   }
 
-  async updateHoraire(formData: any) {
+  async updateHoraire() {
     let url = "horaires/" + this.horaire._id;
-    (await this.httpService.putData(url, formData)).subscribe(
+    (await this.httpService.putData(url, this.formData)).subscribe(
       (response: any) => {
         alert("Success");
       },
@@ -85,6 +83,7 @@ export class EmployeComponent {
     this.statService.getStatSemaine(this.idUser).subscribe(
       (response: any) => {
         this.statData = response.resultat;
+        this.show = true;
         this.chartOptions = this.initiateChart(this.statData.data.tempsTravailHeure, this.statData.labels);
       },
       (error: any) => {

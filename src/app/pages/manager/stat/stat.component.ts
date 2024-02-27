@@ -5,6 +5,7 @@ import {
   ApexResponsive,
   ApexChart
 } from "ng-apexcharts";
+import { StatService } from 'src/app/services/stat/stat.service';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -13,7 +14,6 @@ export type ChartOptions = {
   labels: any;
 };
 
-import { StatService } from 'src/app/services/stat/stat.service';
 
 @Component({
   selector: 'app-stat',

@@ -27,7 +27,7 @@ export class HistoriqueService {
   }
 
   getSuiviDone(data: any) {
-    let url = environment.urlBack + `rdvDetails/done/${data.idUser}`;
+    let url = environment.baseUrl + `rdvDetails/done/${data.idUser}`;
     let params = new HttpParams();
     console.log("🚀 ~ HistoriqueService ~ getHistorique ~ data:", data);
 
