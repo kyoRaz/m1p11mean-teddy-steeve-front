@@ -37,4 +37,46 @@ export class StatService {
     return this.http.get<any>(url);
   }
 
+  getTypeList() {
+    const url = environment.baseUrl + `typeDepenses`;
+    return this.http.get<any>(url);
+  }
+
+  createDepense(data: any) {
+    const url = environment.baseUrl + `depenses`;
+    return this.http.post<any>(url, data);
+  }
+
+  getDepense() {
+    const url = environment.baseUrl + `depenses`;
+    return this.http.get<any>(url);
+  }
+
+
+  filtertDepense(data: any) {
+    const url = environment.baseUrl + `depenses/filtre`;
+    let params = new HttpParams();
+
+    if (data) {
+      if (data.startDate) {
+        params = params.set('startDate', data.startDate);
+      }
+      if (data.endDate) {
+        params = params.set('endDate', data.endDate);
+      }
+    }
+
+    return this.http.get<any>(url, { params });
+  }
+
+  updateDepense(id: any, data: any) {
+    const url = environment.baseUrl + `depenses/${id}`;
+    return this.http.put<any>(url, data);
+  }
+
+  deleteDepense(id: any) {
+    const url = environment.baseUrl + `depenses/${id}`;
+    return this.http.delete<any>(url);
+  }
+
 }
