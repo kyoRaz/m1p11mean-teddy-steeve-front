@@ -26,8 +26,7 @@ export class SuivitacheComponent {
 
 
   ngOnInit() {
-    let jsonString = this.localStorageService.getData("user");
-    let user = JSON.parse(jsonString);
+    let user = this.localStorageService.getData("user");
     this.idUser = user._id;
     let data = {
       size: this.size,

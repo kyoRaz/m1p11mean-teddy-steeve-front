@@ -27,7 +27,7 @@ export const ExtraRoutes: Routes = [
         path: 'tache',
         component: AppChipsComponent,
       },
-      
+
     ],
   },
 ];
