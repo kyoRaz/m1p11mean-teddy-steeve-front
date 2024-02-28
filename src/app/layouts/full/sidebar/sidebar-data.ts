@@ -1,7 +1,7 @@
 import { NavItem } from './nav-item/nav-item';
 
-export const navItems: NavItem[] = [
-  
+export const navItemsManager: NavItem[] = [
+
   {
     navCap: 'Manager',
   },
@@ -21,6 +21,15 @@ export const navItems: NavItem[] = [
     route: '/manager/employe-page',
   },
   {
+    displayName: 'Dépense',
+    iconName: 'users',
+    route: '/manager/depense',
+  },
+
+];
+export const navItemsEmploye: NavItem[] = [
+
+  {
     navCap: 'Employé',
   },
   {
@@ -38,6 +47,10 @@ export const navItems: NavItem[] = [
     iconName: 'history-toggle',
     route: '/employe/suivi',
   },
+  
+];
+export const navItemsClient: NavItem[] = [
+
   {
     navCap: 'Client',
   },
