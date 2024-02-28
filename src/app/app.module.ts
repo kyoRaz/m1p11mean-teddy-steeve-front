@@ -43,7 +43,8 @@ import { environment } from './environments/environment';
 registerLocaleData(localeFr);
 
 export function tokenGetter() {
-  return localStorage.getItem("token");
+  let token = localStorage.getItem("token");
+  return token;
 }
 
 

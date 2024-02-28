@@ -35,7 +35,7 @@ export class AppSideLoginComponent {
       } else if (userRole === 'employe') {
         this.router.navigate(['/employe']);
       } else if (userRole === 'client') {
-        this.router.navigate(['/client']);
+        this.router.navigate(['/client/rdv']);
       } else {
         console.error('Rôle d\'utilisateur non reconnu :', userRole);
         this.router.navigate(['/error']);
