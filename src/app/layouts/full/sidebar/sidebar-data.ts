@@ -15,7 +15,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Dashboard',
     iconName: 'layout-dashboard',
-    route: '/manager/',
+    route: '/manager/stat',
   },
   {
     displayName: 'Services',
@@ -59,9 +59,9 @@ export const navItems: NavItem[] = [
     route: '/client/historique',
   },
   {
-    displayName: 'Sold',
+    displayName: 'Solde',
     iconName: 'brand-cashapp',
-    route: '/client/sold',
+    route: '/client/solde',
   },
   {
     displayName: 'Préference',
