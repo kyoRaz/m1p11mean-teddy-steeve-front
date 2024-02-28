@@ -12,6 +12,7 @@ import { RdvComponent } from './rdv/rdv.component';
 import { AppTakerdvComponent } from './createrdv/takerdv.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SodlComponent } from './sodl/sodl.component';
+import { SoldeComponent } from './solde/solde/solde.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SodlComponent } from './sodl/sodl.component';
     HistoriqueComponent,
     RdvComponent,
     AppTakerdvComponent,
-    SodlComponent
+    SodlComponent,
+    SoldeComponent
   ],
   imports: [
     CommonModule,

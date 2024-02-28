@@ -12,6 +12,13 @@
     </ol>
   </nav>
   <div class="container-fluid">
+<mat-card class="cardWithShadow">
+  <mat-card-content>
+      <mat-card-title>Préférences</mat-card-title>
+      <mat-card-subtitle class="mat-body-1"></mat-card-subtitle>
+  </mat-card-content>
+  </mat-card>
+<div class="container-fluid">
     <div class="row">
       <div class="col">
         <div class="card" style="width: 18rem;">
@@ -107,34 +114,30 @@
                 </select>
               </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-          </div>
-        </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Valider</button>
+            </div>
+          </form>
+        </div>
       </div>
+      </div>
+      
+
+<!-- SUPPRESSION -->
+<div class="modal fade" id="modalSuppression" tabindex="-1" aria-labelledby="modalSuppressionLabel" aria-hidden="true" >
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="modalSuppressionLabel">Suppression Preference :</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
-  </div>
-
-
-  <!-- SUPPRESSION -->
-  <div class="modal fade" id="modalSuppression" tabindex="-1" aria-labelledby="modalSuppressionLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="modalSuppressionLabel">Suppression Preference :</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Êtes - vous sûr de vouloir supprimer cette preference ?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-          <button type="button" class="btn btn-primary" (click)="deletePref()">Accepter</button>
-        </div>
-      </div>
+    <div class="modal-body">
+      Êtes - vous sûr de  vouloir  supprimer cette preference ?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+      <button type="button" class="btn btn-primary" (click)="deletePref()" data-bs-dismiss="modal">Valider</button>
     </div>
   </div>
 </div>

@@ -11,7 +11,8 @@ export class RdvComponent {
 
   rdv: any = {}
   listRdvDet: any = []
-
+  total: any
+  id: string | null = ""
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -21,11 +22,11 @@ export class RdvComponent {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      const id = params.get('id');
-      if (id) {
-        console.log(`L'ID du livre est ${id}`);
-        this.getRdv(id);
-        this.getDetails(id);
+      this.id = params.get('id');
+      if (this.id) {
+        console.log(`L'this.id du livre est ${this.id}`);
+        this.getRdv(this.id);
+        this.getDetails(this.id);
         // Ici, vous pouvez appeler une fonction pour charger les détails du livre à partir de l'ID
       } else {
         // Gérer le cas où l'ID n'est pas trouvé, par exemple en redirigeant
@@ -34,7 +35,7 @@ export class RdvComponent {
     });
   }
 
-  getRdv(id: string) {
+  getRdv(id: any) {
     this.rdvService.getRDV(id).subscribe(
       (response) => {
         this.rdv = response.result;
@@ -48,8 +49,22 @@ export class RdvComponent {
 
   getDetails(id: string) {
     this.rdvService.getListDetails(id).subscribe(
+      (response: any) => {
+        this.listRdvDet = response.result.list;
+        this.total = response.result.total
+      },
+      (error) => {
+        alert('Erreur: ' + error.message);
+      }
+    );
+  }
+
+  payerRDV() {
+    this.rdvService.payer(this.id).subscribe(
       (response) => {
-        this.listRdvDet = response.result;
+        console.log("🚀 ~ HistoriqueComponent ~ onSubmit ~ response:", response);
+        alert("Success");
+        this.getRdv(this.id);
       },
       (error) => {
         // alert('Erreur: ' + error.message);

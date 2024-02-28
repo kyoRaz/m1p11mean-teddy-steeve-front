@@ -25,12 +25,15 @@ export class StatComponent {
   chartOptions: Partial<ChartOptions> | any;
   chartOptionNbReservationParJour: Partial<ChartOptions> | any;
   chartOptionNbReservationParMois: Partial<ChartOptions> | any;
+  chartOptionBenefice: Partial<ChartOptions> | any;
   statData: any = {};
   statDataNbReservationParJour: any = {};
   statDataNbReservationParMois: any = {};
+  statBenefice: any = {};
   show = false;
   showNbReservationParJour = false;
   showNbReservationParMois = false;
+  showBenefice = false;
 
   constructor(private statService: StatService) { }
 
@@ -50,13 +53,10 @@ export class StatComponent {
   ngOnInit(): void {
 
 
-    // let couleur = ['Rouge', 'Vert']
-    // let nb = [1, 15]
-    // this.chartOptions = this.initiateChart(nb, couleur)
-    this.getStat();
     this.getReservationJour();
     this.getStatNbReservationParMois();
-
+    this.getStat();
+    this.getStatBenefice();
   }
 
 
@@ -78,7 +78,7 @@ export class StatComponent {
     this.statService.getReservationJour().subscribe(
       (response: any) => {
         this.statDataNbReservationParJour = response.resultat;
-        console.log("🚀 ~ StatComponent ~ getReservationJour ~ this.statData:", this.statDataNbReservationParJour)
+        // console.log("🚀 ~ StatComponent ~ getReservationJour ~ this.statData:", this.statDataNbReservationParJour)
         this.showNbReservationParJour = true;
         this.chartOptionNbReservationParJour = this.initiateChartNbReservationParJour(this.statDataNbReservationParJour.data ?? [], this.statDataNbReservationParJour.labels ?? []);
       },
@@ -93,13 +93,28 @@ export class StatComponent {
     this.statService.getReservationMois().subscribe(
       (response: any) => {
         this.statDataNbReservationParMois = response.resultat;
-        console.log("🚀 ~ StatComponent ~ getReservationMois ~ this.statData:", this.statDataNbReservationParMois)
+        // console.log("🚀 ~ StatComponent ~ getReservationMois ~ this.statData:", this.statDataNbReservationParMois)
         this.showNbReservationParMois = true;
         this.chartOptionNbReservationParMois = this.initiateChartNbReservationParMois(this.statDataNbReservationParMois.data ?? [], this.statDataNbReservationParMois.labels ?? []);
       },
       (error: any) => {
         console.error(error);
         // alert("Une erreur s'est produite : " + error.message);
+      }
+    );
+  }
+
+  async getStatBenefice() {
+    this.statService.getBeneficeStat().subscribe(
+      (response: any) => {
+        this.statBenefice = response.resultat;
+        console.log("🚀 ~ StatComponent ~ getBenefice ~ this.stat:", this.statBenefice.data)
+        this.showBenefice = true;
+        this.chartOptionBenefice = this.initiateChartBenefice(this.statBenefice.data ?? [], this.statBenefice.labels ?? []);
+      },
+      (error: any) => {
+        console.error(error);
+        alert("Une erreur s'est produite : " + error.message);
       }
     );
   }
@@ -292,4 +307,52 @@ export class StatComponent {
     return options;
 
   }
+
+  initiateChartBenefice(valeur: any, libelle: any) {
+
+    var options = {
+      series: valeur,
+      chart: {
+        type: 'bar',
+        height: 350
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: '55%',
+          endingShape: 'rounded'
+        },
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent']
+      },
+      xaxis: {
+        categories: libelle,
+      },
+      yaxis: {
+        title: {
+          text: '$ (thousands)'
+        }
+      },
+      fill: {
+        opacity: 1
+      },
+      tooltip: {
+        // y: {
+        //   formatter: function (val) {
+        //     return "$ " + val + " thousands"
+        //   }
+        // }
+      }
+    };
+    return options;
+
+  }
+
+
 }

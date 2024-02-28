@@ -54,6 +54,53 @@
   </form>
   </mat-card-content>
   </mat-card>
+   
+   
+<mat-card class="cardWithShadow">
+  <mat-card-header>
+    <div class="mat-mdc-card-header-text">
+    <mat-card-title class="mat-mdc-card-title m-b-0">Horaire de travail 
+    </mat-card-title>
+    </div>
+</mat-card-header>
+<mat-card-content>
+  <form #horaireForm="ngForm" (ngSubmit)="setFormData(horaireForm.value)">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group mb-2">
+                <label for="heureDebut">Début de travail</label>
+                <input type="time" class="form-control" id="heureDebut" name="heureDebut" [(ngModel)]="horaire.heureDebut" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group mb-2">
+                <label for="heureFin">Fin de Travail</label>
+                <input type="time" class="form-control" id="heureFin" name="heureFin" [(ngModel)]="horaire.heureFin" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group mb-2">
+                <label for="pauseDebut">Début de Pause</label>
+                <input type="time" class="form-control" id="pauseDebut" name="pauseDebut" [(ngModel)]="horaire.pauseDebut" required>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group mb-3"> <!-- Ajout d'une marge en bas pour aligner avec la marge du bouton quand sur mobile -->
+                <label for="pauseFin">Fin de Pause</label>
+                <input type="time" class="form-control" id="pauseFin" name="pauseFin" [(ngModel)]="horaire.pauseFin" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpdate">Valider</button>
+    </div>
+</form>
+</mat-card-content>
+</mat-card>
 
 
   <mat-card class="cardWithShadow" *ngIf="show">
