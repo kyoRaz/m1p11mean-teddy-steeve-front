@@ -30,15 +30,22 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MyPaginatorIntl } from './paginator-intl';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 
 
 // Importer les données de locale pour le français
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
+import { JwtModule } from "@auth0/angular-jwt";
+import { environment } from './environments/environment';
 
 // Enregistrer les données de locale pour le français
 registerLocaleData(localeFr);
+
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
+
 
 @NgModule({
   declarations: [
@@ -56,6 +63,13 @@ registerLocaleData(localeFr);
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        headerName: 'x-auth-token',
+        authScheme: ''
+      },
+    }),
     ReactiveFormsModule,
     MaterialModule,
     TablerIconsModule.pick(TablerIcons),
