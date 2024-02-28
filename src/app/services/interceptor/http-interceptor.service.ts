@@ -7,10 +7,10 @@ import { TokenService } from '../token/token.service';
 import { Router } from '@angular/router';
 
 const APP_XHR_TIMEOUT = 7000;
+
 @Injectable({
   providedIn: 'root'
 })
-
 export class HttpInterceptorService {
 
   constructor(
@@ -24,6 +24,7 @@ export class HttpInterceptorService {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.totalrequest++;
+    this.loaderService.isLoading.next(true);
     const modifiedReq = req.clone({
       setHeaders: {
         // 'Authorization': `Bearer ${this.token.getToken()}`,
@@ -41,7 +42,7 @@ export class HttpInterceptorService {
   private handleSuccessfulResponse(event: any): HttpResponse<any> {
     // console.log('response at interceptor', event);
 
-    this.loaderService.isLoading.next(true);
+    // this.loaderService.isLoading.next(true);
     // if (event instanceof HttpResponse) {
     //   event = event.clone({ body: event.body.response });
     // }
@@ -58,29 +59,19 @@ export class HttpInterceptorService {
 
     switch (errorResponse.status) {
       case 401: // Unauthorized
-        //console.log(errorResponse);
-        // alert('error' + errorResponse.message);
         printerror = 'Mot de passe ou identifiant invalide';
         // this.token.signOut();
         break;
       case 503: // Service Unavailable
-        //console.log(errorResponse);
-        // alert('error' + errorResponse.error);
         printerror = '503 ';
         break;
       case 500: // Internal Server 
-        //console.log(errorResponse);
-        // alert('error' + errorResponse.error);
         printerror = 'Erreur interne du serveur';
         break;
       case 504:
-       // console.log(errorResponse);
-        // alert('error' + errorResponse.error);
         printerror = 'Serveur API erreur';
         break;
       default:
-        //console.log(errorResponse);
-        // alert(errorResponse.error);
         printerror = errorResponse.message;
     }
 

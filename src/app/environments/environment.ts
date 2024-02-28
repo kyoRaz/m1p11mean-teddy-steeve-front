@@ -3,9 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  baseUrl: "api/beauty/",
-  // whitelist: ["localhost:3000", "http://192.168.1.120:3000"],
+  production: true,
+  baseUrl: "api/beauty/"
 };
 
 /*

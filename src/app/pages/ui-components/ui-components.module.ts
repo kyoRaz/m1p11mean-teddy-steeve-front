@@ -11,7 +11,7 @@ import { DatePipe } from '@angular/common';
 import { UiComponentsRoutes } from './ui-components.routing';
 
 // ui components
-import { AppChipsComponent } from './chips/chips.component';
+import { AppChipsComponent } from '../extra/tache/chips.component';
 import { AppListsComponent } from './lists/lists.component';
 import { AppDialogComponent } from '../client/dialog/dialog.component';
 import { MatNativeDateModule } from '@angular/material/core';

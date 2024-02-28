@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../../services/http/http.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { LoaderService } from "../../../services/loader/loader.service";
 
 @Component({
   selector: 'app-lists',
@@ -24,7 +25,9 @@ export class AppListsComponent implements OnInit {
     commission:new FormControl('', [Validators.required, Validators.min(0)])
   });
 
-  constructor(private httpservice: HttpService,public dialog: MatDialog) {}
+  constructor(private httpservice: HttpService,
+    public dialog: MatDialog
+    ,public loader: LoaderService) {}
   
   ngOnInit(): void {
     this.loadData();
@@ -88,10 +91,10 @@ export class AppListsComponent implements OnInit {
       if(data){
         this.dataSource=data.resultat;
         this.formData.reset();
-        // this.total = data.total;
-        // this.totalPages = data.totalPages;
-        // this.page = data.page;
-        // this.size = data.limit;
+        this.total = data.total;
+        this.totalPages = data.totalPages;
+        this.page = data.page;
+        this.size = data.limit;
       }
       console.log(data);
     },(error: any) =>{

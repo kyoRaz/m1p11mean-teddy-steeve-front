@@ -1,6 +1,6 @@
 {
     "/api/beauty":{
-        "target":"http://0.0.0.0:3000",
+        "target":" https://manja.onrender.com",
         "secure": true,
         "changeOrigin": false,
         "logLevel": "debug"

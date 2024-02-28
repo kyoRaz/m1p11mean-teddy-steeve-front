@@ -1,21 +1,14 @@
 import { NavItem } from './nav-item/nav-item';
 
 export const navItems: NavItem[] = [
-  // {
-  //   navCap: 'Home',
-  // },
-  // {
-  //   displayName: 'Dashboard',
-  //   iconName: 'layout-dashboard',
-  //   route: '/dashboard',
-  // },
+  
   {
     navCap: 'Manager',
   },
   {
     displayName: 'Dashboard',
     iconName: 'layout-dashboard',
-    route: '/manager/',
+    route: '/manager/stat',
   },
   {
     displayName: 'Services',
@@ -38,12 +31,12 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Tache',
     iconName: 'notes',
-    route: '/employe/login',
+    route: '/employe/tache',
   },
   {
     displayName: 'Historique',
     iconName: 'history-toggle',
-    route: '/employe/login',
+    route: '/employe/suivi',
   },
   {
     navCap: 'Client',
@@ -59,24 +52,13 @@ export const navItems: NavItem[] = [
     route: '/client/historique',
   },
   {
-    displayName: 'Sold',
+    displayName: 'Solde',
     iconName: 'brand-cashapp',
-    route: '/client/activate',
+    route: '/client/solde',
   },
   {
     displayName: 'Préference',
     iconName: 'star',
     route: '/client/preference',
   },
-  
-  // {
-  //   displayName: 'Login',
-  //   iconName: 'lock',
-  //   route: '/authentication/login',
-  // },
-  // {
-  //   displayName: 'Register',
-  //   iconName: 'user-plus',
-  //   route: '/authentication/register',
-  // },
 ];

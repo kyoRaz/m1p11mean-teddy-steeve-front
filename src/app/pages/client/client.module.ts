@@ -11,6 +11,7 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
 import { RdvComponent } from './rdv/rdv.component';
 import { AppTakerdvComponent } from './createrdv/takerdv.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { SodlComponent } from './sodl/sodl.component';
 import { SoldeComponent } from './solde/solde/solde.component';
 
 @NgModule({
@@ -19,6 +20,7 @@ import { SoldeComponent } from './solde/solde/solde.component';
     HistoriqueComponent,
     RdvComponent,
     AppTakerdvComponent,
+    SodlComponent,
     SoldeComponent
   ],
   imports: [

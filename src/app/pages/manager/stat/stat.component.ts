@@ -69,7 +69,7 @@ export class StatComponent {
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
+        // alert("Une erreur s'est produite : " + error.message);
       }
     );
   }
@@ -84,7 +84,7 @@ export class StatComponent {
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
+        // alert("Une erreur s'est produite : " + error.message);
       }
     );
   }
@@ -99,7 +99,7 @@ export class StatComponent {
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
+        // alert("Une erreur s'est produite : " + error.message);
       }
     );
   }
