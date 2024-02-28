@@ -6,6 +6,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { HttpInterceptorService } from 'src/app/services/interceptor/http-interceptor.service';
+import { TokenService } from 'src/app/services/token/token.service';
 
 
 @Component({
@@ -22,5 +24,8 @@ export class HeaderComponent {
 
   showFiller = false;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private token: HttpInterceptorService) {}
+  logout(){
+    this.token.logout();
+  }
 }
