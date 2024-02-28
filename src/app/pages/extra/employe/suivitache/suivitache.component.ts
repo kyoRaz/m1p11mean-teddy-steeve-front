@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { HistoriqueService } from 'src/app/services/historique/historique.service';
+import { LocalStorageService } from 'src/app/services/storage/local-storage.service';
 import { LoaderService } from "../../../../services/loader/loader.service";
 
 @Component({
@@ -17,12 +18,17 @@ export class SuivitacheComponent {
   totalPages: number = 0;
   page: number = 1;
   size: number = 10;
-  idUser: string = "65bf7f78652c514a5a9bf7d4"
+  idUser: string
 
-  constructor(private histoService: HistoriqueService
-    ,public loader: LoaderService) { }
+  constructor(private histoService: HistoriqueService,
+    private localStorageService: LocalStorageService,
+    public loader: LoaderService) { }
+
 
   ngOnInit() {
+    let jsonString = this.localStorageService.getData("user");
+    let user = JSON.parse(jsonString);
+    this.idUser = user._id;
     let data = {
       size: this.size,
       page: this.page,

@@ -10,6 +10,7 @@ import {
   ApexChart
 } from "ng-apexcharts";
 import { StatService } from 'src/app/services/stat/stat.service';
+import { LocalStorageService } from 'src/app/services/storage/local-storage.service';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -28,18 +29,23 @@ export class EmployeComponent {
   user: any = {};
   horaire: any = {};
   servicename: string = "users";
-  idUser: string = "65bf7f78652c514a5a9bf7d4"
+  idUser: string;
   chartOptions: Partial<ChartOptions> | any;
   statData: any = {};
   show = false;
 
-  constructor(private httpService: HttpService
-    , private statService: StatService
-    ,public loader: LoaderService) {
+  constructor(
+    private httpService: HttpService,
+    private statService: StatService,
+    private localStorageService: LocalStorageService
+    , public loader: LoaderService) {
 
   }
 
   ngOnInit(): void {
+    let jsonString = this.localStorageService.getData("user");
+    let user = JSON.parse(jsonString);
+    this.idUser = user._id;
     this.httpService.getOne(this.servicename, this.idUser).subscribe(response => {
       this.user = response;
     });

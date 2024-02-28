@@ -216,7 +216,7 @@ export class StatComponent {
 
       },
       title: {
-        text: 'Monthly Inflation in Argentina, 2002',
+        text: 'Nombre de réservation par jour',
         floating: true,
         offsetY: 330,
         align: 'center',
@@ -295,7 +295,7 @@ export class StatComponent {
 
       },
       title: {
-        text: 'Monthly Inflation in Argentina, 2002',
+        text: 'Nombre de réservation par mois',
         floating: true,
         offsetY: 330,
         align: 'center',
