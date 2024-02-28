@@ -90,6 +90,7 @@ export class EmployeComponent {
   async getStat() {
     this.statService.getStatSemaine(this.idUser).subscribe(
       (response: any) => {
+        console.log(response);
         this.statData = response.resultat;
         this.show = true;
         this.chartOptions = this.initiateChart(this.statData.data.tempsTravailHeure, this.statData.labels);
