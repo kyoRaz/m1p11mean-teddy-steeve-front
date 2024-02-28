@@ -6,7 +6,9 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { HttpInterceptorService } from 'src/app/services/interceptor/http-interceptor.service';
+import { LocalStorageService } from 'src/app/services/storage/local-storage.service';
 import { TokenService } from 'src/app/services/token/token.service';
 
 
@@ -24,8 +26,14 @@ export class HeaderComponent {
 
   showFiller = false;
 
-  constructor(public dialog: MatDialog, private token: HttpInterceptorService) {}
-  logout(){
+  constructor(public dialog: MatDialog, private token: HttpInterceptorService,
+    private router: Router,
+    private localStorageService: LocalStorageService) { }
+  logout() {
     this.token.logout();
+    this.localStorageService.removeData('token');
+    this.localStorageService.removeData('user');
+    this.localStorageService.removeData('role');
+    this.router.navigate(['/authentication/login']);
   }
 }
