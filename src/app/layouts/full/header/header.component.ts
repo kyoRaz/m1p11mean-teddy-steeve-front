@@ -31,9 +31,5 @@ export class HeaderComponent {
     private localStorageService: LocalStorageService) { }
   logout() {
     this.token.logout();
-    this.localStorageService.removeData('token');
-    this.localStorageService.removeData('user');
-    this.localStorageService.removeData('role');
-    this.router.navigate(['/authentication/login']);
   }
 }

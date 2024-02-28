@@ -56,6 +56,7 @@ export class HttpInterceptorService {
       case 401: // Unauthorized
         printerror = 'Mot de passe ou identifiant invalide';
         this.token.signOut();
+        this.route.navigate(['']);
         break;
       case 503: // Service Unavailable
         printerror = '503 ';
@@ -85,6 +86,7 @@ export class HttpInterceptorService {
   }
 
   logout() {
+    alert('rouge')
       this.token.signOut();
       this.route.navigate(['']);
   }
