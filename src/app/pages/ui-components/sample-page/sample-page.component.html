@@ -108,8 +108,9 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
 
-      <mat-paginator [length]="total" [pageSize]="size" (page)="onPageChange($event)" aria-label="Select page" showFirstLastButtons>
+      <mat-paginator [length]="total" [pageSize]="size" (page)="onPageChange($event)"  aria-label="Select page" showFirstLastButtons>
       </mat-paginator>
     </mat-card-content>
   </mat-card>
 </div>
+<!-- (page)="onPageChange($event)" -->

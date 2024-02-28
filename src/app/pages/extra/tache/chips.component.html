@@ -1,0 +1,87 @@
+<div *ngIf="(loader.isLoading | async)" class="loader-overlay ">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+<div *ngIf="!(loader.isLoading | async)">
+
+  <mat-card class="cardWithShadow ">
+    <div class="d-flex align-items-center">
+      <mat-card-title>Commission obtenu: {{commission }}</mat-card-title>
+    </div>
+  </mat-card>
+  <mat-card class="cardWithShadow ">
+    <mat-card-content class="mat-mdc-card-content">
+      <div class="d-flex align-items-center">
+        <mat-card-title>Tache</mat-card-title>
+      </div>
+      <div class="row taskboard m-t-24">
+
+        <div class="col-lg-4">
+          <mat-card class="cardWithShadow">
+            <mat-card-content class="p-24">
+              <mat-card-title>Tache quotidienne</mat-card-title>
+
+              <div class="timeline m-t-24">
+                <div class="timeline-item d-flex overflow-hidden" *ngFor="let rdv of allRDV">
+                  <div class="time text-right mat-subtitle-1 f-s-14">
+                    {{ rdv.debutService  }}
+                  </div>
+                  <div class="point d-flex align-items-center">
+                    <span *ngIf="rdv.statusService === 'Fini'" class="timeline-badge border-success m-y-8"></span>
+                    <span *ngIf="rdv.statusService !== 'Fini'" class="timeline-badge border-error m-y-8"></span>
+                    <span class="timline-border d-block"></span>
+                  </div>
+                  <div class="desc">
+                    <ng-template [ngIf]="rdv.service.nom">
+                      <span class="mat-subtitle-1 f-s-14 lh-20 f-w-600 d-block">{{rdv.service.nom}}</span>
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-lg-8">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="taskboard-wrapper">
+                <div class="taskboard-list todos">
+                  <div class="taskboard-header bg-primary p-y-8 p-x-16 rounded text-white m-b-16">
+                    <span>En attente</span>
+                  </div>
+                  <div class="cdk-drop-list taskboard-cards">
+                    <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+                      [cdkDropListConnectedTo]="[doneList]" (cdkDropListDropped)="drop($event,'todo')">
+                      <div *ngFor="let item of todo" cdkDrag class="taskboard-task bg-blue">
+                        <div class="f-s-16 m-b-4 f-w-600">{{item.service.nom}}</div>
+                        <span class="task-decription f-s-14">{{item.service.prix |  currency:'MGA ':'symbol'}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="taskboard-wrapper">
+                <div class="taskboard-list todos">
+                  <div class="taskboard-header bg-success p-y-8 p-x-16 rounded text-white m-b-16">
+                    <span>Terminé</span>
+                  </div>
+                  <div class="cdk-drop-list taskboard-cards">
+                    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+                      [cdkDropListConnectedTo]="[todoList]" (cdkDropListDropped)="drop($event,'done')">
+                      <div *ngFor="let item of done"  class="taskboard-task">
+                        <div class="f-s-16 m-b-4 f-w-600">{{item.service.nom}}</div>
+                        <span class="task-decription f-s-14">{{item.service.prix |  currency:'MGA ':'symbol'}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

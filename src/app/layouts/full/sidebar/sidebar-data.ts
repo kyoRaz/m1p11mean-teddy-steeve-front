@@ -61,7 +61,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Sold',
     iconName: 'brand-cashapp',
-    route: '/client/activate',
+    route: '/client/sold',
   },
   {
     displayName: 'Préference',

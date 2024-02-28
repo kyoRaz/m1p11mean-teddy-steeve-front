@@ -23,8 +23,6 @@ export class AppTakerdvComponent implements OnInit{
 
   servicename: string = "services";
   servicenameRDV: string = "rdvs/config";
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
   today = new Date().toISOString().slice(0, 10);
   formData = new FormGroup({
     _id: new FormControl(''),
@@ -92,17 +90,6 @@ export class AppTakerdvComponent implements OnInit{
     return this.formData.dirty;
   }
 
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    }
-  }
+  
 
 }

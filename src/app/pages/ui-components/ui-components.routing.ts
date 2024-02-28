@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 // ui
-import { AppChipsComponent } from './chips/chips.component';
+import { AppChipsComponent } from '../extra/tache/chips.component';
 import { AppListsComponent } from './lists/lists.component';
 import { AppDialogComponent } from '../client/dialog/dialog.component';
 import { AppDashboardComponent } from './dashboard/dashboard.component';

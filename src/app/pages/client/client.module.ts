@@ -11,13 +11,15 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
 import { RdvComponent } from './rdv/rdv.component';
 import { AppTakerdvComponent } from './createrdv/takerdv.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { SodlComponent } from './sodl/sodl.component';
 
 @NgModule({
   declarations: [
     PreferenceComponent,
     HistoriqueComponent,
     RdvComponent,
-    AppTakerdvComponent
+    AppTakerdvComponent,
+    SodlComponent
   ],
   imports: [
     CommonModule,
