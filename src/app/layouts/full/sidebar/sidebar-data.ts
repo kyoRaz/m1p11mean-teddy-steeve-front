@@ -67,7 +67,7 @@ export const navItemsClient: NavItem[] = [
   {
     displayName: 'Solde',
     iconName: 'brand-cashapp',
-    route: '/client/solde',
+    route: '/client/sold',
   },
   {
     displayName: 'Préference',
