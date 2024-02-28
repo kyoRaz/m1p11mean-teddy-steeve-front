@@ -1,100 +1,105 @@
-<mat-card class="cardWithShadow">
-    <mat-card-content>
-      <mat-card-title>Tâche effectué</mat-card-title>
-      <mat-card-subtitle class="mat-body-1"></mat-card-subtitle>
-    </mat-card-content>
-  </mat-card>
-  
-<mat-card class="cardWithShadow">
-<mat-card-header>
-    <div class="mat-mdc-card-header-text">
-    <mat-card-title class="mat-mdc-card-title m-b-0">Horaire de travail 
-    </mat-card-title>
-    </div>
-</mat-card-header>
-<mat-card-content>
-    <form #filtreForm="ngForm" (ngSubmit)="onSubmit(filtreForm.value)">
-        <div class="row">
-            <!-- Champ de date de début -->
-            <div class="col-md-5">
-            <label for="dateDebut" class="form-label">Début</label>
-            <input type="date" class="form-control" id="dateDebut" name="dateDebut" ngModel>
-            </div>
-            
-            <!-- Champ de date de fin -->
-            <div class="col-md-5">
-            <label for="dateFin" class="form-label">Fin</label>
-            <input type="date" class="form-control" id="dateFin" name="dateFin" ngModel>
-            </div>
-            
-            <!-- Bouton de soumission -->
-            <div class="col-md-2 d-flex align-items-end">
-            <button type="submit" class="btn btn-primary">Filtrer</button>
-            </div>
-        </div>
-    </form>  
-</mat-card-content>
-</mat-card>
-
-
-<mat-card class="cardWithShadow">
+<div *ngIf="(loader.isLoading | async)" class="loader-overlay ">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+  <div *ngIf="!(loader.isLoading | async)">
+    <mat-card class="cardWithShadow">
+        <mat-card-content>
+        <mat-card-title>Tâche effectué</mat-card-title>
+        <mat-card-subtitle class="mat-body-1"></mat-card-subtitle>
+        </mat-card-content>
+    </mat-card>
+    
+    <mat-card class="cardWithShadow">
     <mat-card-header>
-        <div>
-        <mat-card-title>Utilisateurs</mat-card-title>
-        <mat-card-subtitle>Employée</mat-card-subtitle>
+        <div class="mat-mdc-card-header-text">
+        <mat-card-title class="mat-mdc-card-title m-b-0">Horaire de travail 
+        </mat-card-title>
         </div>
     </mat-card-header>
     <mat-card-content>
-        <table mat-table [dataSource]="listDone">
-    
-        <!-- Position Column -->
-        <ng-container matColumnDef="num">
-            <th mat-header-cell *matHeaderCellDef> # </th>
-            <td mat-cell *matCellDef="let element; let i = index;">
-                {{i + 1}}
-            </td>
-            </ng-container>
-            
-
-        <ng-container matColumnDef="service">
-            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"> Services </th>
-                <td mat-cell *matCellDef="let element" class="mat-body-1"> {{element.serviceInfo.nom }}</td>
-        </ng-container>
-    
-
-        <ng-container matColumnDef="dateRDV">
-            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"> Date du  Rendez-vous  </th>
-            <td mat-cell *matCellDef="let element" class="mat-body-1"> {{element.rdvInfo.dateRdv | date:'EEE d MMM y':'':'fr' }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="horaire">
-            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"> Horaire </th>
-            <td mat-cell *matCellDef="let element" class="mat-body-1"> {{ '1970-01-01T'+element.debutService | date:'shortTime':'':'fr' }}  -  {{ '1970-01-01T'+element.finService | date:'shortTime':'':'fr' }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="çommission">
-            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"> Commission </th>
-            <td mat-cell *matCellDef="let element" class="mat-body-1"> {{(element.prixService*element.serviceInfo.commission)/100}} Ar </td>
-        </ng-container>
-    
-
-    
-    
-        <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> Action </th>
-            <td mat-cell *matCellDef="let element">
-              <button mat-button mat-button [routerLink]="['/client/rdv/', element._id]">
-                <mat-icon>visibility</mat-icon> Aperçu
-              </button>
-            </td>
-          </ng-container>
-    
-    
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-    
-        <!-- <mat-paginator [length]="totalPages" [pageSize]="size" (page)="onPageChange($event)" showFirstLastButtons>
-        </mat-paginator> -->
+        <form #filtreForm="ngForm" (ngSubmit)="onSubmit(filtreForm.value)">
+            <div class="row">
+                <!-- Champ de date de début -->
+                <div class="col-md-5">
+                <label for="dateDebut" class="form-label">Début</label>
+                <input type="date" class="form-control" id="dateDebut" name="dateDebut" ngModel>
+                </div>
+                
+                <!-- Champ de date de fin -->
+                <div class="col-md-5">
+                <label for="dateFin" class="form-label">Fin</label>
+                <input type="date" class="form-control" id="dateFin" name="dateFin" ngModel>
+                </div>
+                
+                <!-- Bouton de soumission -->
+                <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary">Filtrer</button>
+                </div>
+            </div>
+        </form>  
     </mat-card-content>
     </mat-card>
+
+
+    <mat-card class="cardWithShadow">
+        <mat-card-header>
+            <div>
+            <mat-card-title>Utilisateurs</mat-card-title>
+            <mat-card-subtitle>Employée</mat-card-subtitle>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <table mat-table [dataSource]="listDone">
+        
+            <!-- Position Column -->
+            <ng-container matColumnDef="num">
+                <th mat-header-cell *matHeaderCellDef> # </th>
+                <td mat-cell *matCellDef="let element; let i = index;">
+                    {{i + 1}}
+                </td>
+                </ng-container>
+                
+
+            <ng-container matColumnDef="service">
+                <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"> Services </th>
+                    <td mat-cell *matCellDef="let element" class="mat-body-1"> {{element.serviceInfo.nom }}</td>
+            </ng-container>
+        
+
+            <ng-container matColumnDef="dateRDV">
+                <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"> Date du  Rendez-vous  </th>
+                <td mat-cell *matCellDef="let element" class="mat-body-1"> {{element.rdvInfo.dateRdv | date:'EEE d MMM y':'':'fr' }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="horaire">
+                <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"> Horaire </th>
+                <td mat-cell *matCellDef="let element" class="mat-body-1"> {{ '1970-01-01T'+element.debutService | date:'shortTime':'':'fr' }}  -  {{ '1970-01-01T'+element.finService | date:'shortTime':'':'fr' }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="çommission">
+                <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 p-l-0"> Commission </th>
+                <td mat-cell *matCellDef="let element" class="mat-body-1"> {{(element.prixService*element.serviceInfo.commission)/100 | currency:'MGA ':'symbol'}}  </td>
+            </ng-container>
+        
+
+        
+        
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element">
+                <button mat-button mat-button [routerLink]="['/client/rdv/', element._id]">
+                    <mat-icon>visibility</mat-icon> Aperçu
+                </button>
+                </td>
+            </ng-container>
+        
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        
+            <!-- <mat-paginator [length]="totalPages" [pageSize]="size" (page)="onPageChange($event)" showFirstLastButtons>
+            </mat-paginator> -->
+        </mat-card-content>
+        </mat-card>
+</div>

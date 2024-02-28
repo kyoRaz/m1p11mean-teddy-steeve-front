@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HistoriqueService } from 'src/app/services/historique/historique.service';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 
 @Component({
   selector: 'app-historique',
@@ -15,7 +16,7 @@ export class HistoriqueComponent {
   page: number = 1;
   size: number = 10;
 
-  constructor(private histoService: HistoriqueService) { }
+  constructor(public loader: LoaderService,private histoService: HistoriqueService) { }
 
   ngOnInit() {
     this.filtreHistorique(null);
@@ -48,7 +49,7 @@ export class HistoriqueComponent {
         // this.getListPreference();
       },
       (error) => {
-        alert('Erreur: ' + error.message);
+        // alert('Erreur: ' + error.message);
       }
     );
   }

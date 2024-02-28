@@ -1,21 +1,14 @@
 import { NavItem } from './nav-item/nav-item';
 
-export const navItems: NavItem[] = [
-  // {
-  //   navCap: 'Home',
-  // },
-  // {
-  //   displayName: 'Dashboard',
-  //   iconName: 'layout-dashboard',
-  //   route: '/dashboard',
-  // },
+export const navItemsManager: NavItem[] = [
+
   {
     navCap: 'Manager',
   },
   {
     displayName: 'Dashboard',
     iconName: 'layout-dashboard',
-    route: '/manager/',
+    route: '/manager/stat',
   },
   {
     displayName: 'Services',
@@ -28,6 +21,15 @@ export const navItems: NavItem[] = [
     route: '/manager/employe-page',
   },
   {
+    displayName: 'Dépense',
+    iconName: 'users',
+    route: '/manager/depense',
+  },
+
+];
+export const navItemsEmploye: NavItem[] = [
+
+  {
     navCap: 'Employé',
   },
   {
@@ -38,13 +40,17 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Tache',
     iconName: 'notes',
-    route: '/employe/login',
+    route: '/employe/tache',
   },
   {
     displayName: 'Historique',
     iconName: 'history-toggle',
-    route: '/employe/login',
+    route: '/employe/suivi',
   },
+  
+];
+export const navItemsClient: NavItem[] = [
+
   {
     navCap: 'Client',
   },
@@ -59,24 +65,13 @@ export const navItems: NavItem[] = [
     route: '/client/historique',
   },
   {
-    displayName: 'Sold',
+    displayName: 'Solde',
     iconName: 'brand-cashapp',
-    route: '/client/activate',
+    route: '/client/solde',
   },
   {
     displayName: 'Préference',
     iconName: 'star',
     route: '/client/preference',
   },
-  
-  // {
-  //   displayName: 'Login',
-  //   iconName: 'lock',
-  //   route: '/authentication/login',
-  // },
-  // {
-  //   displayName: 'Register',
-  //   iconName: 'user-plus',
-  //   route: '/authentication/register',
-  // },
 ];

@@ -60,7 +60,7 @@ export class HttpService  {
     };
     return this.http.post(url, data, options).pipe(
       tap(() => {
-        alert('succes')
+        // alert('succes')
         console.log(data);
         
         // this._refreshAllPostBod.next();
@@ -80,7 +80,7 @@ export class HttpService  {
     };
     return this.http.delete(url).pipe(
       tap(() => {
-        alert('Delete succes')
+        // alert('Delete succes')
       })
     );
   }
@@ -97,7 +97,7 @@ export class HttpService  {
     };
     return this.http.put(url, data, options).pipe(
       tap(() => {
-        alert('succes')
+        // alert('succes')
       })
     );
   }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 import { RdvService } from 'src/app/services/rdv/rdv.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class RdvComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private rdvService: RdvService
+    private rdvService: RdvService,
+    public loader: LoaderService
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +42,7 @@ export class RdvComponent {
 
       },
       (error) => {
-        alert('Erreur: ' + error.message);
+        // alert('Erreur: ' + error.message);
       }
     );
   }
@@ -65,7 +67,7 @@ export class RdvComponent {
         this.getRdv(this.id);
       },
       (error) => {
-        alert('Erreur: ' + error.message);
+        // alert('Erreur: ' + error.message);
       }
     );
   }

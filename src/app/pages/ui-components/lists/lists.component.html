@@ -1,81 +1,86 @@
-<mat-card class="cardWithShadow theme-card"  id="form1">
-  <mat-card-header>
-    <mat-card-title class="m-b-0">Ajout nouveau Service</mat-card-title>
-  </mat-card-header>
-  <mat-card-content class="b-t-1">
-    <div class="row">
-      <form [formGroup]="formData" >
-        <mat-form-field class="col-sm-3" appearance="outline">
-          <mat-label>Nom</mat-label>
-          <input matInput formControlName="nom" name="nom">
-        </mat-form-field>
-        <mat-form-field class="col-sm-3" appearance="outline">
-          <mat-label>Delai</mat-label>
-          <input matInput formControlName="delai" name="delai" >
-          <mat-error class="col-sm-12" *ngIf="formData.get('delai')">
-            Le format de l'heure doit être HH:mm:ss
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="col-sm-3" appearance="outline">
-          <mat-label>Prix</mat-label>
-          <input matInput formControlName="prix" name="prix" type="number" min="0" required>
-          <mat-error class="col-sm-12" *ngIf="formData.get('prix')">
-            Le prix doit être positive
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="col-sm-3" appearance="outline">
-          <mat-label>Commission</mat-label>
-          <input matInput formControlName="commission" name="commission" type="number" min="0" required>
-          <mat-error class="col-sm-12" *ngIf="formData.get('commission')">
-            Le commision doit être supérieur ou égal 0
-          </mat-error>
-        </mat-form-field>
-         <div class="col-sm-2" *ngIf="isupdate===false" >
-          <button mat-raised-button color="primary" (click)="onSubmit()">Ajouter</button>
-        </div>
-        <div class="col-sm-2" *ngIf="isupdate===true">
-          <button mat-raised-button color="primary" (click)="updateData()">Modifier</button>
-        </div> 
-      </form>
-    </div>
-  </mat-card-content>
-</mat-card>
-<mat-card class="cardWithShadow theme-card" >
-  <mat-card-header>
-    <mat-card-title class="m-b-0">Listes des Services</mat-card-title>
-  </mat-card-header>
-  <mat-card-content class="b-t-1">
-    <div class="row">
-      <div class="col-lg-4" *ngFor="let service of dataSource">
-        <!-- --------------------------------------------------- -->
-        <!-- Service -->
-        <!-- --------------------------------------------------- -->
-        <mat-card class="cardWithShadow overflow-hidden b-1 shadow-none">
-          <mat-card-header class="bg-primary text-white course-header d-flex justify-content-between">
-            <mat-card-title class="m-b-0 f-s-16">{{capitalizeFirstLetter(service['nom'])}}</mat-card-title>
-            <span class="d-flex align-items-center gap-4">
-             <i-tabler name="clock" class="icon-16 d-flex"></i-tabler>
-             {{service['delai'] }}
-            </span>
-          </mat-card-header>
-          <mat-card-content class="text-center p-y-24">
-            <h3 class="m-b-4 mat-subtitle-2 f-s-16 f-w-600">{{capitalizeFirstLetter(service['nom'])}}</h3>
-            <p class="f-s-12"> Disponibilité: 
-              <span class="bg-light-success f-s-10 f-w-600 p-6 p-y-4 rounded text-success" *ngIf="service['estActif']"> 
-                <i-tabler class="p-6" name="check" matListItemIcon ></i-tabler> Dispo
-              </span>
-             <br>
-             Commission: <span class="bg-light-primary f-s-12 f-w-600 p-6 p-y-4 rounded text-primary">{{service['commission']}}%</span></p>
-          </mat-card-content>
-          <mat-card-footer class="text-center p-y-24">
-            <p>
-              <span class="col-sm-6 f-s-6">{{service['prix'] | currency:'MGA ':'symbol'}} </span>
-            </p>
-            <span class="col-sm-3"  (click)="scrollToSection('form1',service)"> <i-tabler class="bg-light-secondary " name="edit" matListItemIcon ></i-tabler> </span>
-            <span class="col-sm-3" (click)="delete(service['_id'])"> <i-tabler class="bg-light-secondary text-error" name="trash" matListItemIcon ></i-tabler>  </span>
-          </mat-card-footer>
-        </mat-card>
+<div *ngIf="(loader.isLoading | async)" class="loader-overlay ">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+<div *ngIf="!(loader.isLoading | async)">
+  <mat-card class="cardWithShadow theme-card"  id="form1">
+    <mat-card-header>
+      <mat-card-title class="m-b-0">Ajout nouveau Service</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+      <div class="row">
+        <form [formGroup]="formData" >
+          <mat-form-field class="col-sm-3" appearance="outline">
+            <mat-label>Nom</mat-label>
+            <input matInput formControlName="nom" name="nom">
+          </mat-form-field>
+          <mat-form-field class="col-sm-3" appearance="outline">
+            <mat-label>Delai</mat-label>
+            <input matInput formControlName="delai" name="delai" >
+            <mat-error class="col-sm-12" *ngIf="formData.get('delai')">
+              Le format de l'heure doit être HH:mm:ss
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-sm-3" appearance="outline">
+            <mat-label>Prix</mat-label>
+            <input matInput formControlName="prix" name="prix" type="number" min="0" required>
+            <mat-error class="col-sm-12" *ngIf="formData.get('prix')">
+              Le prix doit être positive
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-sm-3" appearance="outline">
+            <mat-label>Commission</mat-label>
+            <input matInput formControlName="commission" name="commission" type="number" min="0" required>
+            <mat-error class="col-sm-12" *ngIf="formData.get('commission')">
+              Le commision doit être supérieur ou égal 0
+            </mat-error>
+          </mat-form-field>
+          <div class="col-sm-2" *ngIf="isupdate===false" >
+            <button mat-raised-button color="primary" (click)="onSubmit()">Ajouter</button>
+          </div>
+          <div class="col-sm-2" *ngIf="isupdate===true">
+            <button mat-raised-button color="primary" (click)="updateData()">Modifier</button>
+          </div> 
+        </form>
       </div>
-    </div>
-  </mat-card-content>
-</mat-card>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="cardWithShadow theme-card" >
+    <mat-card-header>
+      <mat-card-title class="m-b-0">Listes des Services</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+      <div class="row">
+        <div class="col-lg-4" *ngFor="let service of dataSource">
+          <!-- --------------------------------------------------- -->
+          <!-- Service -->
+          <!-- --------------------------------------------------- -->
+          <mat-card class="cardWithShadow overflow-hidden b-1 shadow-none">
+            <mat-card-header class="bg-primary text-white course-header d-flex justify-content-between">
+              <mat-card-title class="m-b-0 f-s-16">{{capitalizeFirstLetter(service['nom'])}}</mat-card-title>
+              <span class="d-flex align-items-center gap-4">
+              <i-tabler name="clock" class="icon-16 d-flex"></i-tabler>
+              {{service['delai'] }}
+              </span>
+            </mat-card-header>
+            <mat-card-content class="text-center p-y-24">
+              <h3 class="m-b-4 mat-subtitle-2 f-s-16 f-w-600">{{capitalizeFirstLetter(service['nom'])}}</h3>
+              <p class="f-s-12"> Disponibilité: 
+                <span class="bg-light-success f-s-10 f-w-600 p-6 p-y-4 rounded text-success" *ngIf="service['estActif']"> 
+                  <i-tabler class="p-6" name="check" matListItemIcon ></i-tabler> Dispo
+                </span>
+              <br>
+              Commission: <span class="bg-light-primary f-s-12 f-w-600 p-6 p-y-4 rounded text-primary">{{service['commission']}}%</span></p>
+            </mat-card-content>
+            <mat-card-footer class="text-center p-y-24">
+              <p>
+                <span class="col-sm-6 f-s-6">{{service['prix'] | currency:'MGA ':'symbol'}} </span>
+              </p>
+              <span class="col-sm-3"  (click)="scrollToSection('form1',service)"> <i-tabler class="bg-light-secondary " name="edit" matListItemIcon ></i-tabler> </span>
+              <span class="col-sm-3" (click)="delete(service['_id'])"> <i-tabler class="bg-light-secondary text-error" name="trash" matListItemIcon ></i-tabler>  </span>
+            </mat-card-footer>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

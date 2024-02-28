@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { environment } from 'src/app/environments/environment';
 import { HttpService } from 'src/app/services/http/http.service';
+import { LoaderService } from "../../../services/loader/loader.service";
 
 import {
   ApexNonAxisChartSeries,
@@ -37,7 +38,7 @@ export class EmployeComponent {
     private httpService: HttpService,
     private statService: StatService,
     private localStorageService: LocalStorageService
-  ) {
+    , public loader: LoaderService) {
 
   }
 
@@ -61,11 +62,11 @@ export class EmployeComponent {
 
     (await this.httpService.putData(url, formData)).subscribe(
       (response: any) => {
-        alert("Success");
+        // alert("Success");
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
+        // alert("Une erreur s'est produite : " + error.message);
       }
     );
   }
@@ -78,11 +79,11 @@ export class EmployeComponent {
     let url = "horaires/" + this.horaire._id;
     (await this.httpService.putData(url, this.formData)).subscribe(
       (response: any) => {
-        alert("Success");
+        // alert("Success");
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
+        // alert("Une erreur s'est produite : " + error.message);
       }
     );
   }
@@ -97,7 +98,7 @@ export class EmployeComponent {
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
+        // alert("Une erreur s'est produite : " + error.message);
       }
     );
   }

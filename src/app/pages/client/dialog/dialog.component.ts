@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { HttpService } from '../../../services/http/http.service';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { AppTakerdvComponent } from '../createrdv/takerdv.component';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 
 @Component({
   selector: 'app-dialog',
@@ -24,6 +25,7 @@ export class AppDialogComponent implements OnInit {
   }
 
   constructor(private httpservice: HttpService,
+    public loader: LoaderService,
     public dialogRef: MatDialogRef<AppTakerdvComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
