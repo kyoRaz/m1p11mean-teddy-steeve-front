@@ -14,13 +14,13 @@
               <mat-card-title>Insert </mat-card-title>
             </mat-card-header>
             <mat-card-content class="b-t-1">
-                <form [formGroup]="formData" >
+                <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)" >
                     <mat-form-field class="col-sm-4" appearance="outline">
                       <mat-label>Montant</mat-label>
-                      <input matInput formControlName="debit" name="debit" type="number" min="0" step="1000" required>
+                      <input matInput class="form-select" name="montant" type="number" min="0" step="1000" ngModel required>
                     </mat-form-field>
                     <div class="col-sm-2" >
-                      <button mat-raised-button color="primary" (click)="onSubmit()">Ajouter</button>
+                      <button mat-raised-button color="primary">Ajouter</button>
                     </div>
                   </form>   
             </mat-card-content>

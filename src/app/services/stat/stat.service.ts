@@ -81,7 +81,7 @@ export class StatService {
 
   ajoutSolde(id: any, montant: any) {
     const url = environment.baseUrl + `soldes`;
-    return this.http.post<any>(url, { id, montant });
+    return this.http.post<any>(url, { idUser: id, montant });
   }
 
   getSolde(id: any) {
