@@ -103,7 +103,11 @@ export class AppChipsComponent implements OnInit {
     this.httpservice.get(this.servicename + `rdvEmployeFiniEtNouveau?idEmploye=${this.idemploye}&date=${today}`).subscribe((data: any) => {
       if (data) {
         this.todo = data.nouveau;
-        this.done = data.fini;
+        if (data.fini && data.fini.length > 0) {
+          this.done = data.fini;
+        } else {
+          this.done = []
+        }
 
       }
     }, (error: any) => {
