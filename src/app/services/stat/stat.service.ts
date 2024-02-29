@@ -79,4 +79,14 @@ export class StatService {
     return this.http.delete<any>(url);
   }
 
+  ajoutSolde(id: any, montant: any) {
+    const url = environment.baseUrl + `soldes`;
+    return this.http.post<any>(url, { id, montant });
+  }
+
+  getSolde(id: any) {
+    const url = environment.baseUrl + `soldes/${id}`;
+    return this.http.get<any>(url);
+  }
+
 }
