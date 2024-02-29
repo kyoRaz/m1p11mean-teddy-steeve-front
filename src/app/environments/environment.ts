@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "api/beauty/"
+  baseUrl: "https://manja.onrender.com/api/beauty/"
 };
 
 /*
