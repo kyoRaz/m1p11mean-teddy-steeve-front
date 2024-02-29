@@ -93,7 +93,7 @@ export class AppChipsComponent implements OnInit {
     const formattedDay = day < 10 ? '0' + day : day.toString();
 
     // Créez une chaîne de caractères dans le format "yyyy-MM-dd"
-    const formattedDate = `${year}-${formattedMonth}-24`;
+    const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
 
     return formattedDate;
   }
@@ -116,8 +116,8 @@ export class AppChipsComponent implements OnInit {
         this.done = data;
         for (let index = 0; index < this.done.length; index++) {
           const element = this.done[index];
-          this.commission+=element.service.prix;
-          
+          this.commission += element.service.prix;
+
         }
       }
     }, (error: any) => {
