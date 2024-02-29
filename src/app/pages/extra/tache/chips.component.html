@@ -67,11 +67,11 @@
                     <span>Terminé</span>
                   </div>
                   <div class="cdk-drop-list taskboard-cards">
-                    <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+                    <div style="min-height: 50px;" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
                       [cdkDropListConnectedTo]="[todoList]" (cdkDropListDropped)="drop($event,'done')">
                       <div *ngFor="let item of done"  class="taskboard-task">
-                        <div class="f-s-16 m-b-4 f-w-600">{{item.service.nom}}</div>
-                        <span class="task-decription f-s-14">{{item.service.prix |  currency:'MGA ':'symbol'}}</span>
+                        <div class="f-s-16 m-b-4 f-w-600">{{item?.service?.nom}}</div>
+                        <span class="task-decription f-s-14">{{item?.service?.prix |  currency:'MGA ':'symbol'}}</span>
                       </div>
                     </div>
                   </div>
