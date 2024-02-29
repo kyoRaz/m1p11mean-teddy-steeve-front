@@ -1,1 +1,46 @@
-<p>sodl works!</p>
+
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+      <mat-card-title class="m-b-0">Solde</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+      <div class="row">
+        <div class="col-lg-6">
+          <!-- --------------------------------------------------- -->
+          <!-- basic -->
+          <!-- --------------------------------------------------- -->
+          <mat-card class="b-1 shadow-none">
+            <mat-card-header>
+              <mat-card-title>Insert </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="b-t-1">
+                <form [formGroup]="formData" >
+                    <mat-form-field class="col-sm-4" appearance="outline">
+                      <mat-label>Montant</mat-label>
+                      <input matInput formControlName="debit" name="debit" type="number" min="0" step="1000" required>
+                    </mat-form-field>
+                    <div class="col-sm-2" >
+                      <button mat-raised-button color="primary" (click)="onSubmit()">Ajouter</button>
+                    </div>
+                  </form>   
+            </mat-card-content>
+          </mat-card>
+        </div>
+  
+        <div class="col-lg-6">
+          <!-- --------------------------------------------------- -->
+          <!-- two line -->
+          <!-- --------------------------------------------------- -->
+          <mat-card class="b-1 shadow-none">
+            <mat-card-header>
+              <mat-card-title>Votre solde</mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="b-t-1">
+              <div> {{solde | currency: 'MGA' : 'symbol'}}</div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
