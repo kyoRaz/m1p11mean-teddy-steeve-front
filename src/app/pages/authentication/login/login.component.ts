@@ -34,7 +34,7 @@ export class AppSideLoginComponent implements OnInit {
 
       // Redirection par  Role
       const userRole = response.user.roleId.libelle;
-      alert(userRole);
+      // alert(userRole);
       if (userRole === 'manager') {
         this.router.navigate(['/manager']);
       } else if (userRole === 'employe') {
