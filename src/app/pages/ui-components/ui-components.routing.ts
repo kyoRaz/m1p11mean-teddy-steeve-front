@@ -6,6 +6,8 @@ import { AppListsComponent } from './lists/lists.component';
 import { AppDialogComponent } from '../client/dialog/dialog.component';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
 import { AppSamplePageComponent } from '../ui-components/sample-page/sample-page.component';
+import { StatComponent } from '../manager/stat/stat.component';
+import { DepenseComponent } from '../manager/depense/depense.component';
 
 export const UiComponentsRoutes: Routes = [
   {
@@ -13,7 +15,7 @@ export const UiComponentsRoutes: Routes = [
     children: [
       {
         path: '',
-        component: AppDashboardComponent,
+        component: StatComponent,
       },
       {
         path: 'chips',
@@ -30,6 +32,10 @@ export const UiComponentsRoutes: Routes = [
       {
         path: 'menu',
         component: AppDialogComponent,
+      },
+      {
+        path: 'depense',
+        component: DepenseComponent,
       },
     ],
   },
