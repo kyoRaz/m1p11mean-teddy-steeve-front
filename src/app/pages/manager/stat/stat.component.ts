@@ -5,6 +5,7 @@ import {
   ApexResponsive,
   ApexChart
 } from "ng-apexcharts";
+import { LoaderService } from 'src/app/services/loader/loader.service';
 import { StatService } from 'src/app/services/stat/stat.service';
 
 export type ChartOptions = {
@@ -35,7 +36,7 @@ export class StatComponent {
   showNbReservationParMois = false;
   showBenefice = false;
 
-  constructor(private statService: StatService) { }
+  constructor(public loader: LoaderService, private statService: StatService) { }
 
   generateColors(numberOfColors: number): string[] {
     let colors: string[] = [];

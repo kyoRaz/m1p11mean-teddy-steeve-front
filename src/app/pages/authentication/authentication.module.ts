@@ -17,11 +17,13 @@ import { AuthenticationRoutes } from './authentication.routing';
 import { AppSideLoginComponent } from './login/login.component';
 import { AppSideRegisterComponent } from './register/register.component';
 import { AppSidePasswordComponent } from './password/password.component';
+import { MaterialModule } from 'src/app/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AuthenticationRoutes),
+    MaterialModule,
     MatIconModule,
     MatCardModule,
     MatInputModule,
@@ -37,4 +39,4 @@ import { AppSidePasswordComponent } from './password/password.component';
     AppSidePasswordComponent,
   ],
 })
-export class AuthenticationModule {}
+export class AuthenticationModule { }
