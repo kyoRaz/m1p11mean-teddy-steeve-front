@@ -7,6 +7,7 @@ import { HttpService } from 'src/app/services/http/http.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoaderService } from 'src/app/services/loader/loader.service';
 import { elementAt } from 'rxjs';
+import { AlertService } from 'src/app/services/alert/alert.service';
 
 
 
@@ -67,7 +68,7 @@ export class AppChipsComponent implements OnInit {
   ];
 
   constructor(private httpservice: HttpService, public dialog: MatDialog
-    , public loader: LoaderService) { }
+    , public loader: LoaderService, public sweet: AlertService) { }
 
   ngOnInit(): void {
     this.loadData();
@@ -129,7 +130,7 @@ export class AppChipsComponent implements OnInit {
     });
   }
 
-  drop(event: CdkDragDrop<any[]>, listname: string) {
+  async drop(event: CdkDragDrop<any[]>, listname: string) {
     if (event.previousContainer !== event.container) {
       transferArrayItem(
         event.previousContainer.data,
@@ -137,11 +138,26 @@ export class AppChipsComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
+      // Accéder à l'objet courant déplacé
+      const currentItem = event.container.data[event.currentIndex];
+      console.log('Objet courant déplacé:', currentItem);
+      this.httpservice.changeEtat(currentItem._id, {}).subscribe(
+        (response) => {
+          this.sweet.showSuccessAlert("préférence enregistré");
+        },
+        (error) => {
+          this.sweet.showErrorAlert("Erreur lors  de la transaction");
+        }
+      );
+      // Vous pouvez ici utiliser `currentItem` pour effectuer d'autres opérations
     } else {
+      // Si l'élément est déplacé à l'intérieur du même conteneur,
+      // vous pouvez choisir de gérer ce cas différemment ou de ne rien faire.
       return;
     }
-
   }
+
+
   disableDoneList() {
     this.doneListDisabled = true;
   }
