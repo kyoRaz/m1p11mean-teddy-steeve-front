@@ -5,37 +5,26 @@
         <mat-card-content class="p-32">
           <div class="text-center">
             <a [routerLink]="['/dashboard']">
-              <img
-                src="./assets/images/logos/beauty.png"
-                class="align-middle m-2"
-                alt="logo"
-                width="300"  
-                height="100" 
-              />
+              <img src="./assets/images/logos/beauty.png" class="align-middle m-2" alt="logo" width="300"
+                height="100" />
             </a>
           </div>
 
           <form class="m-t-30" #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)">
-            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
-              >Email</mat-label
-            >
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Email</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
               <input matInput type="text" id="email" name="email" [(ngModel)]="formData.email" required />
             </mat-form-field>
             <!-- password -->
-            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
-            >mot de passe</mat-label
-            >
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">mot de passe</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput type="password" id="password" name="password" [(ngModel)]="formData.password" required />            </mat-form-field>
+              <input matInput type="password" id="password" name="password" [(ngModel)]="formData.password" required />
+            </mat-form-field>
 
             <div class="d-flex align-items-center m-b-12">
               <!-- <mat-checkbox color="primary">Remember this Device</mat-checkbox> -->
-              <a
-                [routerLink]="['/']"
-                class="text-primary f-w-600 text-decoration-none m-l-auto f-s-14"
-                >mot  de passe oublié</a
-              >
+              <a [routerLink]="['/']" class="text-primary f-w-600 text-decoration-none m-l-auto f-s-14">mot de passe
+                oublié</a>
             </div>
             <!-- <a [routerLink]="['/']" mat-flat-button color="primary" class="w-100">
               Sign In
@@ -45,35 +34,34 @@
             </button>
             <!-- input -->
           </form>
-          <span class="d-block f-w-500 text-center m-t-24"
-            >
-            <a
-              [routerLink]="['/authentication/register']"
-              class="text-decoration-none text-primary f-w-500 f-s-14"
-            >
-              Inscription</a
-            >
+          <span class="d-block f-w-500 text-center m-t-24">
+            <a [routerLink]="['/authentication/register']" class="text-decoration-none text-primary f-w-500 f-s-14">
+              Inscription</a>
           </span>
         </mat-card-content>
       </mat-card>
     </div>
-    <div class="col-lg-4">
-      <div class="text-center"> 
-        <h5>Information pour chaque type d'utilisateur</h5>
-        <div>Client</div>
-        <ul>
-          <li>SteeveKely@gmail.com</li>
-        </ul>
-        <div>Employée</div>
-        <ul>
-          <li>tsito@gmail.com</li>
-        </ul>
-        <div>Manager</div>
-        <ul>
-          <li>solofo@gmail.com</li>
-        </ul>
-        <span>Mot de passse: mdp4Test</span>
-      </div>
+    <div class="col-lg-4 d-flex align-items-center">
+      <mat-card class="cardWithShadow boxed-auth">
+        <mat-card-content class="p-32">
+          <div class="text-center">
+            <h5>Information pour chaque type d'utilisateur</h5>
+            <div>Client</div>
+            <ul>
+              <li>SteeveKely@gmail.com</li>
+            </ul>
+            <div>Employée</div>
+            <ul>
+              <li>tsito@gmail.com</li>
+            </ul>
+            <div>Manager</div>
+            <ul>
+              <li>solofo@gmail.com</li>
+            </ul>
+            <span>Mot de passse: mdp4Test</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
 </div>
