@@ -1,3 +1,7 @@
+<div *ngIf="(loader.isLoading | async)" class="loader-overlay ">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>
+<div *ngIf="!(loader.isLoading | async)">
 <mat-card class="cardWithShadow">
     <mat-card-content>
       <mat-card-title>Statistique</mat-card-title>
@@ -124,3 +128,4 @@
         
   </mat-card-content>
 </mat-card>
+</div>

@@ -4,6 +4,7 @@ import { StatComponent } from './stat/stat.component';
 import { DepenseComponent } from './depense/depense.component';
 
 const routes: Routes = [
+  { path: '', component: StatComponent },
   { path: 'stat', component: StatComponent },
   { path: 'depense', component: DepenseComponent }
 ];

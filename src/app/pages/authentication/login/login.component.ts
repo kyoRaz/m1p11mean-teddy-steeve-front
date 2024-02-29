@@ -2,6 +2,7 @@ import { E } from '@angular/cdk/keycodes';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/auth/login.service';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 import { LocalStorageService } from 'src/app/services/storage/local-storage.service';
 
 @Component({
@@ -11,15 +12,16 @@ import { LocalStorageService } from 'src/app/services/storage/local-storage.serv
 export class AppSideLoginComponent implements OnInit {
 
   formData: any = {};
-  erreur= false;
+  erreur = false;
 
   constructor(
+    public loader: LoaderService,
     private router: Router,
     private loginService: LoginService,
     private localStorageService: LocalStorageService
   ) { }
   ngOnInit(): void {
-    this.erreur=false;
+    this.erreur = false;
   }
 
   onSubmit(formData: any) {
@@ -34,7 +36,7 @@ export class AppSideLoginComponent implements OnInit {
 
       // Redirection par  Role
       const userRole = response.user.roleId.libelle;
-      alert(userRole);
+      // alert(userRole);
       if (userRole === 'manager') {
         this.router.navigate(['/manager']);
       } else if (userRole === 'employe') {
@@ -47,7 +49,7 @@ export class AppSideLoginComponent implements OnInit {
       }
 
     }, error => {
-      this.erreur=true;
+      this.erreur = true;
       console.error('Erreur lors de la requête POST :', error);
     });
   }
