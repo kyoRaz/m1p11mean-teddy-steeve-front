@@ -30,7 +30,7 @@
         </mat-card-header>
         <mat-card-content class="mat-mdc-card-content b-t-1">
           <div *ngFor="let employe of dataSource">
-            <span (click)="addcard(employe.idEmploye._id, data.service._id)">{{employe.idEmploye.nom}} {{employe.idEmploye.prenom}}</span>
+            <span (click)="addcard(employe.idEmploye._id, data.service._id)" class="mat-body-1">{{employe.idEmploye.nom}} {{employe.idEmploye.prenom}}</span>
           </div>
         </mat-card-content>
       </mat-card>
