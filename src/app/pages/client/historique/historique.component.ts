@@ -16,7 +16,7 @@ export class HistoriqueComponent {
   page: number = 1;
   size: number = 10;
 
-  constructor(public loader: LoaderService,private histoService: HistoriqueService) { }
+  constructor(public loader: LoaderService, private histoService: HistoriqueService) { }
 
   ngOnInit() {
     this.filtreHistorique(null);
@@ -46,10 +46,9 @@ export class HistoriqueComponent {
         this.historique = response.resultat;
         this.size = response.size;
         console.log("🚀 ~ HistoriqueComponent ~ onSubmit ~ response:", response);
-        // this.getListPreference();
       },
       (error) => {
-        // alert('Erreur: ' + error.message);
+        console.log('Erreur: ' + error.message);
       }
     );
   }

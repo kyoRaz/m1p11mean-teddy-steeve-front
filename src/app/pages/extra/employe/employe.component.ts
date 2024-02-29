@@ -10,6 +10,7 @@ import {
   ApexChart
 } from "ng-apexcharts";
 import { StatService } from 'src/app/services/stat/stat.service';
+import { AlertService } from 'src/app/services/alert/alert.service';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -36,7 +37,9 @@ export class EmployeComponent {
   constructor(
     private httpService: HttpService,
     private statService: StatService,
-    private localStorageService: LocalStorageService) {
+    private localStorageService: LocalStorageService,
+    public sweet: AlertService
+  ) {
 
   }
 
@@ -59,11 +62,11 @@ export class EmployeComponent {
 
     (await this.httpService.putData(url, formData)).subscribe(
       (response: any) => {
-        alert("Success");
+        this.sweet.showSuccessAlert("enregistré");
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
+        this.sweet.showErrorAlert("Erreur lors  de la transaction");
       }
     );
   }
@@ -76,11 +79,11 @@ export class EmployeComponent {
     let url = "horaires/" + this.horaire._id;
     (await this.httpService.putData(url, this.formData)).subscribe(
       (response: any) => {
-        alert("Success");
+        this.sweet.showSuccessAlert("enregistré");
       },
       (error: any) => {
-        console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
+        this.sweet.showErrorAlert("Erreur lors  de la transaction");
+        console.log("Une erreur s'est produite : " + error.message);
       }
     );
   }
@@ -94,7 +97,7 @@ export class EmployeComponent {
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
+        console.log("Une erreur s'est produite : " + error.message);
       }
     );
   }

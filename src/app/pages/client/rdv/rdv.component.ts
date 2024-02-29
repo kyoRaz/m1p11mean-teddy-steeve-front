@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alert/alert.service';
 import { LoaderService } from 'src/app/services/loader/loader.service';
 import { RdvService } from 'src/app/services/rdv/rdv.service';
 
@@ -17,7 +18,8 @@ export class RdvComponent {
     private route: ActivatedRoute,
     private router: Router,
     private rdvService: RdvService,
-    public loader: LoaderService
+    public loader: LoaderService,
+    public sweet: AlertService
   ) { }
 
   ngOnInit(): void {
@@ -42,7 +44,7 @@ export class RdvComponent {
 
       },
       (error) => {
-        // alert('Erreur: ' + error.message);
+        console.log('Erreur: ' + error.message);
       }
     );
   }
@@ -54,7 +56,7 @@ export class RdvComponent {
         this.total = response.result.total
       },
       (error) => {
-        alert('Erreur: ' + error.message);
+        console.log('Erreur: ' + error.message);
       }
     );
   }
@@ -63,11 +65,12 @@ export class RdvComponent {
     this.rdvService.payer(this.id).subscribe(
       (response) => {
         console.log("🚀 ~ HistoriqueComponent ~ onSubmit ~ response:", response);
-        alert("Success");
+        this.sweet.showSuccessAlert("payement effectué");
         this.getRdv(this.id);
       },
       (error) => {
-        // alert('Erreur: ' + error.message);
+        this.sweet.showErrorAlert("Erreur lors  de la transaction");
+        console.log('Erreur: ' + error.message);
       }
     );
   }

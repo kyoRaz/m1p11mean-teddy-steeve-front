@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertService } from 'src/app/services/alert/alert.service';
 import { StatService } from 'src/app/services/stat/stat.service';
 
 @Component({
@@ -19,7 +20,7 @@ export class DepenseComponent {
   size: number = 10;
   filtre: string = '';
 
-  constructor(private statService: StatService) { }
+  constructor(private statService: StatService, public sweet: AlertService) { }
 
   ngOnInit(): void {
     this.getListType();
@@ -31,12 +32,12 @@ export class DepenseComponent {
     console.log(formData);
     this.statService.createDepense(formData).subscribe(
       (response: any) => {
-        alert("Success");
+        this.sweet.showSuccessAlert("transaction effectué");
         this.getDepense();
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
+        this.sweet.showErrorAlert("Erreur lors  de la transaction");
       }
     );
   }
@@ -55,7 +56,6 @@ export class DepenseComponent {
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
       }
     );
   }
@@ -67,7 +67,6 @@ export class DepenseComponent {
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
       }
     );
   }
@@ -75,12 +74,12 @@ export class DepenseComponent {
   onUpdate(formData: any) {
     this.statService.updateDepense(this.depense._id, formData).subscribe(
       (response: any) => {
-        alert("Success");
+        this.sweet.showSuccessAlert("transaction effectué");
         this.getDepense();
       },
       (error: any) => {
+        this.sweet.showErrorAlert("Erreur lors  de la transaction");
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
       }
     );
   }
@@ -88,12 +87,12 @@ export class DepenseComponent {
   deleteDep() {
     this.statService.deleteDepense(this.depense._id).subscribe(
       (response: any) => {
-        alert("Success");
+        this.sweet.showSuccessAlert("transaction effectué");
         this.getDepense();
       },
       (error: any) => {
+        this.sweet.showErrorAlert("Erreur lors  de la transaction");
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
       }
     );
   }
@@ -113,7 +112,6 @@ export class DepenseComponent {
       },
       (error: any) => {
         console.error(error);
-        alert("Une erreur s'est produite : " + error.message);
       }
     );
   }

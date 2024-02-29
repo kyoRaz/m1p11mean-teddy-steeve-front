@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Preference } from 'src/app/models/preference.model';
+import { AlertService } from 'src/app/services/alert/alert.service';
 import { LoaderService } from 'src/app/services/loader/loader.service';
 import { PreferenceService } from 'src/app/services/preference/preference.service';
 import { LocalStorageService } from 'src/app/services/storage/local-storage.service';
@@ -20,7 +21,8 @@ export class PreferenceComponent {
   constructor(
     private prefService: PreferenceService,
     private storage: LocalStorageService,
-    public loader: LoaderService
+    public loader: LoaderService,
+    public sweet: AlertService
   ) { }
 
   ngOnInit(): void {
@@ -79,12 +81,11 @@ export class PreferenceComponent {
     }
     this.prefService.createPreference(data).subscribe(
       (response) => {
-
-        // alert('Succès: ' + response.message);
+        this.sweet.showSuccessAlert("préférence enregistré");
         this.getListPreference();
       },
       (error) => {
-        // alert('Erreur: ' + error.message);
+        this.sweet.showErrorAlert("Erreur lors  de la transaction");
       }
     );
   }
@@ -98,11 +99,11 @@ export class PreferenceComponent {
     this.prefService.updatePreference(this.pref._id, data).subscribe(
       (response) => {
 
-        // alert('Succès: ');
+        this.sweet.showSuccessAlert("préférence enregistrer");
         this.getListPreference();
       },
       (error) => {
-        // alert('Erreur: ' + error.message);
+        this.sweet.showErrorAlert("Erreur lors  de la transaction");
       }
     );
   }
@@ -112,11 +113,12 @@ export class PreferenceComponent {
     this.prefService.deletePreference(this.pref._id).subscribe(
       (response) => {
 
-        // alert('Succès: ' + response.message);
+        this.sweet.showSuccessAlert("préférence supprimé");
         this.getListPreference();
       },
       (error) => {
-        // alert('Erreur: ' + error.message);
+        this.sweet.showErrorAlert("Erreur lors  de la transaction");
+        console.log('Erreur: ' + error.message);
       }
     );
   }
